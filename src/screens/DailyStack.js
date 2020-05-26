@@ -10,7 +10,7 @@ const DailyStack = ({navigation}) =>
 {
     return(
     <Stack.Navigator>
-    <Stack.Screen name="D" component={Daily} 
+    <Stack.Screen name="Daily" component={Daily} 
     options={{
      headerRight: () =>  <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
      <Image style={styles.setting} source = {{uri:beok[0].setting}}/>

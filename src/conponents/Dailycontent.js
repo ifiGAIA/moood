@@ -36,7 +36,7 @@ const Dailycontent = ({navigation}) => {
          <View style={styles.h3}> 
          <View style={styles.t1}>
            <Text style={styles.whyw}>{me.why1}</Text>
-           <Button onPress={() => setMe({})} title="delete" />
+           {/* <Button onPress={() => setMe({})} title="delete" /> */}
          </View>
          </View>
        
@@ -69,7 +69,7 @@ const Dailycontent = ({navigation}) => {
          <View style={styles.h3}> 
          <View style={styles.t1}>
          <Text style={styles.whyw}>{me.why2}</Text>
-           <Button onPress={() => setMe({})} title="delete" />
+           {/* <Button onPress={() => setMe({})} title="delete" /> */}
          </View>
          </View>
   
@@ -103,7 +103,7 @@ const Dailycontent = ({navigation}) => {
        <View style={styles.h3}> 
        <View style={styles.t1}>
        <Text style={styles.whyw}>{me.why3}</Text>
-           <Button onPress={() => setMe({})} title="delete" />
+           {/* <Button onPress={() => setMe({})} title="delete" /> */}
        </View>
        </View>
 
