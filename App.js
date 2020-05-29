@@ -148,7 +148,7 @@ const App = () => {
         }
       >
         <Stack.Navigator>
-          <Stack.Screen name="Loogin" component={Login}
+          <Stack.Screen name="Looogin" component={Login}
             options={{
               headerShown: false
             }} />
