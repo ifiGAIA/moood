@@ -1,14 +1,26 @@
-import React, { useState }from 'react';
-import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity,LayoutAnimation, Button} from 'react-native';
+import React, { useState,useEffect,useRef }from 'react';
+import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity,Animated, Button} from 'react-native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
 import beok from "../json/json.json"
 import { setConfigurationAsync } from 'expo/build/AR';
 
 const Stack = createStackNavigator();
+
 const RedButton = ({navigation}) => {
     console.log(navigation)
     const [count, setCount] = useState(0);
+
+    const position = new Animated.ValueXY(0, 0);
+    useEffect(() => {
+      Animated.spring(position, {
+        toValue: { x: 350, y: 500 },
+      }).start();
+    }, []);
+  
+    <Animated.View style={[position.getLayout(), styles.ball]} />
+  
+
     if(count<=60)
     return (
         <ScrollView style={styles.container}>
@@ -85,6 +97,12 @@ const RedButton = ({navigation}) => {
       width:50,
       height:50,
       marginLeft:240
+    },
+    ball: {
+      height: 60,
+      width: 60,
+      borderRadius: 30,
+      backgroundColor: "red",
     },
   });
 
