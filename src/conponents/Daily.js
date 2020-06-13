@@ -12,7 +12,7 @@ const Daily = ({navigation}) => {
     return (
     <ScrollView style={styles.container}>
              <View style={styles.date}>
-                 <Text style={styles.wday}>2020.05</Text>
+                 <Text style={styles.wday}>2020</Text>
              </View>
              <View style={styles.day}>
                  <Text style={styles.dayw}>5</Text>
@@ -37,22 +37,25 @@ const Daily = ({navigation}) => {
         backgroundColor:"#05495D",
     },
     date:{
-        marginLeft:20,
-        marginTop:-10
-    },
-    wd:{
-        color:"#fff",
-        fontWeight:"bold"
+        width:90,
+        marginTop:50,
+        backgroundColor:"#fff",
+        height:30,
+        alignItems: 'center',
+        justifyContent:"center",
+        borderTopRightRadius:999,
+        borderBottomRightRadius:999
     },
     wday:{
-        color:"#fff",
-        fontSize:15,
+        color:"#05495D",
+        fontSize:16,
         fontWeight:"bold",
-        letterSpacing:5,
-        marginTop:30
+        letterSpacing:3,
+        
     },
     day:{
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop:-10
     },
     dayw:{
         color:"#fff",
@@ -61,7 +64,7 @@ const Daily = ({navigation}) => {
     },
     dayform:{
         alignItems: 'center',
-        marginTop:10
+        marginTop:50
     },
     formb:{
         width:340,
@@ -85,7 +88,7 @@ const Daily = ({navigation}) => {
         height:36.53,
         // width:90,
         // height:109.59,
-        marginTop:50,
+        marginTop:90,
         left:-15
     },
   });

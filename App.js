@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableWithoutFeedbac, TouchableOpacity, Linking, ScrollView, AsyncStorage } from 'react-native';
+import React, { useState,useEffect } from 'react';
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedbac, TouchableOpacity, Linking, ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator, DrawerActions } from '@react-navigation/stack';
 import { Input } from 'react-native-elements';
@@ -24,7 +24,7 @@ import Setting from "./src/conponents/Setting"
 import beok from "./src/json/json.json";
 import { TextInput } from 'react-native-gesture-handler';
 import { StoreProvider } from "./src/stores/Store.js"
-
+import * as firebase from "firebase";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const MyTab = () => {
@@ -50,31 +50,75 @@ const MyTab = () => {
               ? require("./src/img/friends1.png")
               : require("./src/img/friends2.png")
           }
+          else if (route.name === 'SETTING') {
+            iconName = focused
+              ? require("./src/img/friends1.png")
+              : require("./src/img/friends2.png")
+          }
           return <Image source={iconName} style={{ width: 40, height: 40 }} />;
 
         },
       })}
       tabBarOptions={{
-        activeBackgroundColor: '#fff',
+        activeBackgroundColor:false,
         inactiveTintColor: '#838383',
         activeTintColor: '#05495D',
-        style: { height: 60 },
+        style: { height: 60,width:"95%", 
+        borderTopLeftRadius:25,
+        borderTopRightRadius:25,
+        left:"2.5%",
+        position:"absolute",
+         },
         labelStyle: {
           bottom: 2,
-        }
-
+        },
       }}>
       <Tab.Screen name="HOME" component={HomeStack} />
       <Tab.Screen name="Daily" component={DailyStack} options={{ title: "DAILY" }} />
       <Tab.Screen name="FRIENDS" component={FriendStack} />
+      <Tab.Screen name="SETTING" component={Setting} />
     </Tab.Navigator>
-
+// options={{ tabBarVisible:false }}
   );
 };
 const Login = ({ navigation }) => {
   console.log(navigation)
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onSignIn = async () => {
+    setError(" ");
+    setLoading(true);
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      navigation.navigate("Home");
+    } catch (err1) {
+      try {
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
+        setEmail("");
+        setPassword("");
+        setError("");
+        navigation.navigate("Home");
+      } catch (err2) {
+        setError(err2.message);
+      }
+    } finally {
+        setLoading(false);
+    }
+  };
+
+  const renderButton = () => {
+   if (loading) {
+      return <ActivityIndicator size="large" style={{ marginTop: 30 }} />;
+   }
+   return (
+    <TouchableOpacity onPress={onSignIn}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign in</Text></View></TouchableOpacity>
+   );
+  };
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.main}>
         <Image style={styles.title} source={{ url: beok[0].title }} />
         <View style={styles.sign}>
@@ -87,6 +131,11 @@ const Login = ({ navigation }) => {
             style={{ fontSize: 20, marginLeft: 20, width: 290 }}
             placeholder="Email"
             placeholderTextColor="#DBDBDB"
+            autoCorrect={false}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={(email) => setEmail(email)}
           />
         </View>
         <View style={styles.password}>
@@ -94,14 +143,20 @@ const Login = ({ navigation }) => {
             style={{ fontSize: 20, marginLeft: 20, width: 290 }}
             placeholder="Password"
             placeholderTextColor="#DBDBDB"
-            secureTextEntry="true"
+            secureTextEntry
+            autoCorrect={false}
+          autoCapitalize="none"
+          value={password}
+          onChangeText={(password) => setPassword(password)}
           />
         </View>
         <View style={styles.rf}>
           <Image style={styles.rm} source={{ url: beok[0].remeberme }} />
           <Image style={styles.fp} source={{ url: beok[0].forgetpassword }} />
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign in</Text></View></TouchableOpacity>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Home")}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign in</Text></View></TouchableOpacity> */}
+        {renderButton()}
+        {/* <Text style={{ padding: 10, fontSize: 16, color: "red" }}>{error}</Text> */}
         <View style={styles.or}>
           <View style={styles.orline}></View>
           <Text style={styles.orw}>or</Text>
@@ -113,7 +168,7 @@ const Login = ({ navigation }) => {
           <Image style={styles.fbgtw} source={{ url: beok[0].twitter }} />
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 const PERSISTENCE_KEY = "ALBUMS_NAVIGATION_STATE";
@@ -136,6 +191,24 @@ const App = () => {
     }
     loadResourcesAndDataAsync();
   }, []);
+
+  useEffect(() => {
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBqVBjsd0lYup9QBOtpwQRxelsakbHKV-Q",
+      authDomain: "logintest-f843a.firebaseapp.com",
+      databaseURL: "https://logintest-f843a.firebaseio.com",
+      projectId: "logintest-f843a",
+      storageBucket: "logintest-f843a.appspot.com",
+      messagingSenderId: "244239715678",
+      appId: "1:244239715678:web:daa106ad69ef257291d3cf",
+      measurementId: "G-NWHE0DB6KT"
+    };
+   if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+   }
+  }, []);
+
   if (!isLoadingComplete) {
     return null;
   } else {
@@ -246,7 +319,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#05495D"
+    backgroundColor: "#05495D",
+    height:"100%"
   },
   setting: {
     width: 30,
@@ -352,7 +426,7 @@ const styles = StyleSheet.create({
   },
   or: {
     flexDirection: "row",
-    marginTop: 40
+    marginTop: 50
   },
   orline: {
     width: 130,

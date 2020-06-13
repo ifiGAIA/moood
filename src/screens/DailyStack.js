@@ -18,6 +18,7 @@ const DailyStack = ({navigation}) =>
     title:"D A I L Y",
     headerTintColor: '#000',
     headerStyle: { backgroundColor: '#FAF9F9' },
+    headerShown: false
   }}/>
     <Stack.Screen name="Content" component={Dailycontent} 
     options={{
@@ -28,6 +29,7 @@ const DailyStack = ({navigation}) =>
     headerTintColor: '#000',
     headerStyle: { backgroundColor: '#FAF9F9' },
     headerBackTitleVisible:false,
+    headerShown: false
   }}/>
   </Stack.Navigator>
     )}

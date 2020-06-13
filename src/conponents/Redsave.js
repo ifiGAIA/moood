@@ -50,7 +50,10 @@ const Redsave = ({ navigation }) => {
                         placeholderTextColor="#fff"
                         color="#fff"
                         multiline="true"
-                        onChangeText={(why1) => setMe({ ...me, why1 })}
+                        onChangeText={(input) => setMe({
+                             ...me, why1: [...me.why1, input] 
+                            })
+                        }
                     />
                 </View>
                 <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.sbtn} source={{ url: beok[1].rsave }} /></TouchableOpacity>

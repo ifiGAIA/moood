@@ -6,13 +6,17 @@ import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
 import beok from "../json/json.json"
 import { setConfigurationAsync } from 'expo/build/AR';
 import { TextInput } from 'react-native-gesture-handler';
-
+import * as firebase from "firebase";
 const Stack = createStackNavigator();
 const Setting = ({navigation}) => {
     console.log(navigation)
-
+    
+    const onSignOut = () => {
+        firebase.auth().signOut();
+        navigation.navigate("Login");
+      };
     return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
         <View style={styles.h1}>
             <Text style={styles.account}>Account</Text>
         <View style={styles.line}></View>
@@ -58,10 +62,10 @@ const Setting = ({navigation}) => {
         </View>
         </View>
         <View style={styles.bottom}>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}><View style={styles.logoutbbin}><Text style={styles.logoutw}>Log out</Text></View></TouchableOpacity>
+        <TouchableOpacity onPress={onSignOut}><View style={styles.logoutbbin}><Text style={styles.logoutw}>Log out</Text></View></TouchableOpacity>
         <Image style={styles.sb} source={{url:beok[2].sb}}/>
         </View>
-    </ScrollView>
+    </View>
     );
 
   };
@@ -70,6 +74,7 @@ const Setting = ({navigation}) => {
   const styles = StyleSheet.create({
     container:{
         backgroundColor:"#05495D",
+        height:"100%"
     },
     h1:{
         alignItems:"center",

@@ -11,7 +11,7 @@ const Home = ({navigation}) => {
   console.log(navigation)
   return (
     <ScrollView style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.openDrawer()}><Image style={styles.setting} source={{url:beok[0].setting}}/></TouchableOpacity>
+      
         <View style={styles.ph}>
       <Image style={styles.iam} source={{url:beok[0].iam}}/>
       <Image style={styles.back} source={{url:beok[0].back}}/>
@@ -101,18 +101,18 @@ const styles = StyleSheet.create({
   iam:{
       width:70,
       height:40,
-      marginTop:30
+      marginTop:50
   },
   back:{
     position:"absolute",
     width:"100%",
     height:410,
-    marginTop:100
+    marginTop:150
   },
   angry:{
       width:90,
       height:109.59,
-      marginTop:40,
+      marginTop:70,
       marginLeft:40
   },
   sad:{

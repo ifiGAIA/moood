@@ -20,7 +20,7 @@ const Dailycontent = ({navigation}) => {
              <TouchableOpacity onPress={()=>setCount(1)}><Image style={styles.sad} source={{url:beok[1].ssad2}}/></TouchableOpacity>
              <TouchableOpacity onPress={()=>setCount(2)}><Image style={styles.happy} source={{url:beok[1].shappy2}}/></TouchableOpacity>
          </View>
-         <View style={styles.h1}>
+         <View style={styles.h1_1}>
          <View style={styles.line2}></View>
              <View style={styles.mood}>
                  <Text style={styles.wm}>DATE</Text>
@@ -34,10 +34,12 @@ const Dailycontent = ({navigation}) => {
          </View>
          </View>
          <View style={styles.h3}> 
-         <View style={styles.t1}>
-           <Text style={styles.whyw}>{me.why1}</Text>
-           <Button onPress={() => setMe({})} title="delete" />
-         </View>
+           {me.why1.map(w1 => (
+         <ScrollView style={styles.t1}>
+            <Text style={styles.whyw}>{w1}</Text>
+         </ScrollView>
+           ))}
+           <Button onPress={() => setMe({...me, why1:[]})} title="delete" />
          </View>
        
       </ScrollView>
@@ -53,7 +55,7 @@ const Dailycontent = ({navigation}) => {
         <TouchableOpacity onPress={()=>setCount(1)}><Image style={styles.sad} source={{url:beok[1].ssad1}}/></TouchableOpacity>
         <TouchableOpacity onPress={()=>setCount(2)}><Image style={styles.happy} source={{url:beok[1].shappy2}}/></TouchableOpacity>
     </View>
-    <View style={styles.h1}>
+    <View style={styles.h1_1}>
              <View style={styles.line2}></View>
              <View style={styles.mood}>
                  <Text style={styles.wm}>DATE</Text>
@@ -67,10 +69,16 @@ const Dailycontent = ({navigation}) => {
          </View>
          </View>
          <View style={styles.h3}> 
-         <View style={styles.t1}>
+         {me.why2.map(w2 => (
+         <ScrollView style={styles.t1}>
+            <Text style={styles.whyw}>{w2}</Text>
+         </ScrollView>
+           ))}
+           <Button onPress={() => setMe({...me, why2:[]})} title="delete" />
+         {/* <View style={styles.t1}>
          <Text style={styles.whyw}>{me.why2}</Text>
-           {/* <Button onPress={() => setMe({})} title="delete" /> */}
-         </View>
+           <Button onPress={() => setMe({})} title="delete" />
+         </View> */}
          </View>
   
  </ScrollView>
@@ -87,7 +95,7 @@ const Dailycontent = ({navigation}) => {
       <TouchableOpacity onPress={()=>setCount(1)}><Image style={styles.sad} source={{url:beok[1].ssad2}}/></TouchableOpacity>
       <TouchableOpacity onPress={()=>setCount(2)}><Image style={styles.happy} source={{url:beok[1].shappy1}}/></TouchableOpacity>
   </View>
-  <View style={styles.h1}>
+  <View style={styles.h1_1}>
            <View style={styles.line2}></View>
            <View style={styles.mood}>
                <Text style={styles.wm}>DATE</Text>
@@ -101,10 +109,16 @@ const Dailycontent = ({navigation}) => {
        </View>
        </View>
        <View style={styles.h3}> 
-       <View style={styles.t1}>
+       {me.why3.map(w3 => (
+         <ScrollView style={styles.t1}>
+            <Text style={styles.whyw}>{w3}</Text>
+         </ScrollView>
+           ))}
+           <Button onPress={() => setMe({...me, why3:[]})} title="delete" />
+       {/* <View style={styles.t1}>
        <Text style={styles.whyw}>{me.why3}</Text>
-           {/* <Button onPress={() => setMe({})} title="delete" /> */}
-       </View>
+           <Button onPress={() => setMe({})} title="delete" />
+       </View> */}
        </View>
 
 </ScrollView>
@@ -120,20 +134,25 @@ const Dailycontent = ({navigation}) => {
     h1:{
       flexDirection:"row",
       marginLeft:20,
-      marginTop:20
+      marginTop:110
+  },
+  h1_1:{
+    flexDirection:"row",
+    marginLeft:20,
+    marginTop:10
   },
   h2:{
     flexDirection:"row",
     marginLeft:20,
-    marginTop:40
+    marginTop:30
 },
   line:{
-      width:3,
-      height:40,
+      width:2,
+      height:30,
       backgroundColor:"#fff"
   },
   line2:{
-    width:3,
+    width:2,
     height:60,
     backgroundColor:"#fff"
 },
@@ -184,7 +203,8 @@ t1:{
   width:320,
   height:250,
   backgroundColor:"#A0C8CD",
-  borderRadius:30
+  borderRadius:30,
+  marginTop:20
 },
 whyw:{
   color:"#fff",

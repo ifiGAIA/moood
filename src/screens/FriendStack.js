@@ -17,7 +17,7 @@ const FriendStack = ({navigation}) =>
     title:"F R I E N D S",
     headerTintColor: '#000',
     headerStyle: { backgroundColor: '#FAF9F9' },
-    
+    headerShown:false
   }}/>
   </Stack.Navigator>
     )}

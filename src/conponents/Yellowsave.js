@@ -50,7 +50,7 @@ const Yellowsave = ({navigation}) => {
        placeholderTextColor="#fff"
        color="#fff"
        multiline="true"
-       onChangeText={(why2) => setMe({ ...me,why2})}
+       onChangeText={(input) => setMe({ ...me, why2:[...me.why2,input]})}
        />
          </View>
          <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.sbtn} source={{url:beok[1].ysave}}/></TouchableOpacity>

@@ -21,7 +21,7 @@ const restoreState = async () => {
     try {
       const hasSetString = await AsyncStorage.getItem(HAS_SET_KEY);
       const hasSet = JSON.parse(hasSetString);
-      if (hasSet) {
+      if (true) {
         const meString = await AsyncStorage.getItem(ME_PERSISTENCE_KEY);
         const state_me = JSON.parse(meString);
         setMe(state_me);

@@ -10,7 +10,7 @@ const Friends = ({navigation}) => {
              <View style={styles.line}></View>
              <View style={styles.date}>
                  <Text style={styles.wd}>DATE</Text>
-                 <Text style={styles.wday}>2 0 2 0 . 0 5 . 0 5 </Text>
+                 <Text style={styles.wday}>2 0 2 0 . 0 5 . 1 1 </Text>
              </View>
          </View>
          <View style={styles.h2}>
@@ -69,15 +69,15 @@ const Friends = ({navigation}) => {
   const styles = StyleSheet.create({
     container:{
         backgroundColor:"#05495D",
-      
+      height:"100%"
     },
     h1:{
         flexDirection:"row",
         marginLeft:20,
-        marginTop:20
+        marginTop:70
     },
     line:{
-        width:3,
+        width:2,
         height:80,
         backgroundColor:"#fff"
     },
@@ -93,7 +93,7 @@ const Friends = ({navigation}) => {
         color:"#fff",
         fontSize:20,
         fontWeight:"bold",
-        marginTop:30
+        marginTop:20
     },
     h2:{
         alignItems: 'center',

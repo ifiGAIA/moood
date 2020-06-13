@@ -50,7 +50,7 @@ const Happysave = ({navigation}) => {
        placeholderTextColor="#fff"
        color="#fff"
        multiline="true"
-       onChangeText={(why3) => setMe({ ...me,why3})}
+       onChangeText={(input) => setMe({ ...me,why3:[...me.why3,input]})}
        />
          </View>
          <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.sbtn} source={{url:beok[1].hsave}}/></TouchableOpacity>
