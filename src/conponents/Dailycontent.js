@@ -11,6 +11,9 @@ const Dailycontent = ({navigation}) => {
     if(count==0)
     return (
         <ScrollView style={styles.container}>
+          <View style={styles.backx}>
+          <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.backxph} source={{url:beok[0].backx}}/></TouchableOpacity>
+          </View>
            <View style={styles.h1}>
              <View style={styles.line}></View>
              <View style={styles.mood}>
@@ -46,6 +49,9 @@ const Dailycontent = ({navigation}) => {
     );
     else if(count==1) return(
       <ScrollView style={styles.container}>
+        <View style={styles.backx}>
+          <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.backxph} source={{url:beok[0].backx}}/></TouchableOpacity>
+          </View>
       <View style={styles.h1}>
         <View style={styles.line}></View>
         <View style={styles.mood}>
@@ -86,6 +92,9 @@ const Dailycontent = ({navigation}) => {
   
  else  return(
     <ScrollView style={styles.container}>
+      <View style={styles.backx}>
+          <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.backxph} source={{url:beok[0].backx}}/></TouchableOpacity>
+          </View>
     <View style={styles.h1}>
       <View style={styles.line}></View>
       <View style={styles.mood}>
@@ -131,10 +140,18 @@ const Dailycontent = ({navigation}) => {
         backgroundColor:"#05495D",
         
     },
+    backx:{
+      alignItems: "flex-end",
+      marginTop:40
+    },
+    backxph:{
+      width:60,
+      height:50,
+    },
     h1:{
       flexDirection:"row",
       marginLeft:20,
-      marginTop:110
+      marginTop:30
   },
   h1_1:{
     flexDirection:"row",

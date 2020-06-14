@@ -22,7 +22,7 @@ const Daily = ({navigation}) => {
              </View>
              <View style={styles.dayform}>
                  <View style={styles.formb}>
-             <Image style={styles.form} source={{url:beok[1].form}}/>
+             {/* <Image style={styles.form} source={{url:beok[1].form}}/> */}
              </View>
              </View>
            

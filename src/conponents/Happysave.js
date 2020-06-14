@@ -72,7 +72,7 @@ const Happysave = ({navigation}) => {
         marginTop:50
     },
     line:{
-        width:3,
+        width:2,
         height:80,
         backgroundColor:"#fff"
     },
@@ -91,7 +91,7 @@ const Happysave = ({navigation}) => {
         marginTop:30
     },
     line2:{
-        width:3,
+        width:2,
         height:40,
         backgroundColor:"#fff"
     },

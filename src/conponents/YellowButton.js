@@ -71,14 +71,14 @@ const YellowButton = ({navigation}) => {
       marginTop:20
     },
     backbtn:{
-      width:50,
+      width:60,
       height:50,
      
     },
     okbtn:{
-      width:50,
+      width:60,
       height:50,
-      marginLeft:230
+      marginLeft:250
     },
   });
 

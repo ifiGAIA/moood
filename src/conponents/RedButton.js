@@ -27,7 +27,7 @@ const RedButton = ({navigation}) => {
           <Image style={styles.bp} source={{url:beok[0].backgr}}/>
         <View style={styles.ph}>
         <Text style={styles.w}>{count}</Text>
-      <TouchableOpacity onPress={()=>setCount((count+1))}><Image style={styles.rbtn} source={{url:beok[0].rbtn}}/></TouchableOpacity>
+      <TouchableOpacity onPress={()=>setCount((count+1))} ><Image style={styles.rbtn} source={{url:beok[0].rbtn}}/></TouchableOpacity>
       </View>
       <View style={styles.bottombtn}>
       <TouchableOpacity onPress={() => navigation.navigate("Home")}><Image style={styles.backbtn} source={{url:beok[0].backbtn}}/></TouchableOpacity>
@@ -90,13 +90,13 @@ const RedButton = ({navigation}) => {
       marginTop:20
     },
     backbtn:{
-      width:50,
+      width:60,
       height:50,
     },
     okbtn:{
-      width:50,
+      width:60,
       height:50,
-      marginLeft:240
+      marginLeft:250
     },
     ball: {
       height: 60,

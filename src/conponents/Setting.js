@@ -38,19 +38,19 @@ const Setting = ({navigation}) => {
         <View style={styles.emailn}>
         <Text style={styles.emailw}>Email</Text>
         <TextInput
-        placeholder="s110619022@stu.ntue.edu.tw"
+        placeholder="2020app@gmail.com"
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"
         />
         </View>
         </View>
-        <View style={styles.c}>
+        {/* <View style={styles.c}>
         <Image style={styles.cc} source={{url:beok[2].c}}/>
         <View style={styles.cn}>
         <Text style={styles.cw}>帳號連結設定</Text>
         </View>
-        </View>
+        </View> */}
         <View style={styles.h2}>
             <Text style={styles.about}>About us</Text>
         <View style={styles.line}></View>
@@ -106,9 +106,9 @@ const Setting = ({navigation}) => {
     alignItems:"center"
    },
    sb:{
-    width:195,
-    height:65,
-    marginTop:20
+    width:120,
+    height:60,
+    marginTop:50,
    },
    logoutbbin:{
     backgroundColor:"#05495D",
@@ -119,7 +119,7 @@ const Setting = ({navigation}) => {
     borderRadius:999,
     justifyContent: 'center', 
     alignItems: 'center',
-    marginTop:60,
+    marginTop:80,
   },
   logoutw:{
       color:"#fff",

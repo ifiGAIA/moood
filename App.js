@@ -1,18 +1,11 @@
 import React, { useState,useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableWithoutFeedbac, TouchableOpacity, Linking, ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator, DrawerActions } from '@react-navigation/stack';
 import { Input } from 'react-native-elements';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
 import { navigationRef } from './RootNavigation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeStack from "./src/screens/HomeStack";
-import Home from "./src/conponents/Home";
 import DailyStack from "./src/screens/DailyStack";
 import FriendStack from "./src/screens/FriendStack";
 import RedButton from "./src/conponents/RedButton";
@@ -52,8 +45,8 @@ const MyTab = () => {
           }
           else if (route.name === 'SETTING') {
             iconName = focused
-              ? require("./src/img/friends1.png")
-              : require("./src/img/friends2.png")
+              ? require("./src/img/setting1.png")
+              : require("./src/img/setting2.png")
           }
           return <Image source={iconName} style={{ width: 40, height: 40 }} />;
 
@@ -78,7 +71,6 @@ const MyTab = () => {
       <Tab.Screen name="FRIENDS" component={FriendStack} />
       <Tab.Screen name="SETTING" component={Setting} />
     </Tab.Navigator>
-// options={{ tabBarVisible:false }}
   );
 };
 const Login = ({ navigation }) => {
@@ -87,7 +79,7 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [count, setCount] = useState(0);
   const onSignIn = async () => {
     setError(" ");
     setLoading(true);
@@ -113,18 +105,24 @@ const Login = ({ navigation }) => {
    if (loading) {
       return <ActivityIndicator size="large" style={{ marginTop: 30 }} />;
    }
+   if(count==0)
    return (
     <TouchableOpacity onPress={onSignIn}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign in</Text></View></TouchableOpacity>
    );
+   else
+   return (
+    <TouchableOpacity onPress={onSignIn}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
+   );
   };
+  if(count==0)
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <Image style={styles.title} source={{ url: beok[0].title }} />
         <View style={styles.sign}>
-          <TouchableOpacity><View style={styles.signinb}><Text style={styles.signinw}>Sign in</Text></View></TouchableOpacity>
+          <TouchableOpacity onPress={()=>setCount(0)}><View style={styles.signinb}><Text style={styles.signinw}>Sign in</Text></View></TouchableOpacity>
           <Text style={styles.line}>/</Text>
-          <TouchableOpacity><View style={styles.signupb}><Text style={styles.signupw}>Sign up</Text></View></TouchableOpacity>
+          <TouchableOpacity onPress={()=>setCount(1)}><View style={styles.signupb}><Text style={styles.signupw}>Sign up</Text></View></TouchableOpacity>
         </View>
         <View style={styles.email}>
           <TextInput
@@ -154,10 +152,74 @@ const Login = ({ navigation }) => {
           <Image style={styles.rm} source={{ url: beok[0].remeberme }} />
           <Image style={styles.fp} source={{ url: beok[0].forgetpassword }} />
         </View>
-        {/* <TouchableOpacity onPress={() => navigation.navigate("Home")}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign in</Text></View></TouchableOpacity> */}
+       
         {renderButton()}
         {/* <Text style={{ padding: 10, fontSize: 16, color: "red" }}>{error}</Text> */}
+
         <View style={styles.or}>
+          <View style={styles.orline}></View>
+          <Text style={styles.orw}>or</Text>
+          <View style={styles.orline}></View>
+        </View>
+        <View style={styles.media}>
+          <Image style={styles.fbgtw} source={{ url: beok[0].fb }} />
+          <Image style={styles.fbgtw} source={{ url: beok[0].google }} />
+          <Image style={styles.fbgtw} source={{ url: beok[0].twitter }} />
+        </View>
+      </View>
+    </View>
+  );
+  else
+  return (
+    <View style={styles.container}>
+      <View style={styles.main}>
+        <Image style={styles.title} source={{ url: beok[0].title }} />
+        <View style={styles.sign}>
+          <TouchableOpacity onPress={()=>setCount(0)}><View style={styles.signinb2}><Text style={styles.signinw2}>Sign in</Text></View></TouchableOpacity>
+          <Text style={styles.line}>/</Text>
+          <TouchableOpacity onPress={()=>setCount(1)}><View style={styles.signupb2}><Text style={styles.signupw2}>Sign up</Text></View></TouchableOpacity>
+        </View>
+        <View style={styles.uesrname}>
+          <TextInput
+            style={{ fontSize: 20, marginLeft: 20, width: 290 }}
+            placeholder="User name"
+            placeholderTextColor="#DBDBDB"
+            // autoCorrect={false}
+            // autoCapitalize="none"
+            // keyboardType="email-address"
+            // value={email}
+            // onChangeText={(email) => setEmail(email)}
+          />
+        </View>
+        <View style={styles.email2}>
+          <TextInput
+            style={{ fontSize: 20, marginLeft: 20, width: 290 }}
+            placeholder="Email"
+            placeholderTextColor="#DBDBDB"
+            autoCorrect={false}
+            autoCapitalize="none"
+            keyboardType="email-address"
+            value={email}
+            onChangeText={(email) => setEmail(email)}
+          />
+        </View>
+        <View style={styles.password2}>
+          <TextInput
+            style={{ fontSize: 20, marginLeft: 20, width: 290 }}
+            placeholder="Password"
+            placeholderTextColor="#DBDBDB"
+            secureTextEntry
+            autoCorrect={false}
+            autoCapitalize="none"
+            value={password}
+            onChangeText={(password) => setPassword(password)}
+          />
+        </View>
+        
+        {renderButton()}
+        {/* <Text style={{ padding: 10, fontSize: 16, color: "red" }}>{error}</Text> */}
+
+        <View style={styles.or2}>
           <View style={styles.orline}></View>
           <Text style={styles.orw}>or</Text>
           <View style={styles.orline}></View>
@@ -351,6 +413,18 @@ const styles = StyleSheet.create({
     color: "#05495D",
     fontSize: 15
   },
+  signinb2: {
+    backgroundColor: "#69929E",
+    width: 100,
+    height: 35,
+    borderRadius: 999,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  signinw2: {
+    color: "#fff",
+    fontSize: 15
+  },
   line: {
     color: "#fff",
     fontSize: 25,
@@ -370,6 +444,18 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 15
   },
+  signupb2: {
+    backgroundColor: "#fff",
+    width: 100,
+    height: 35,
+    borderRadius: 999,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  signupw2: {
+    color: "#05495D",
+    fontSize: 15
+  },
   email: {
     width: 330,
     height: 60,
@@ -378,10 +464,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 60
   },
-  emailw: {
-    color: "#DBDBDB",
-    fontSize: 20,
-    marginLeft: 20
+  email2: {
+    width: 330,
+    height: 60,
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    justifyContent: 'center',
+    marginTop: 20
   },
   password: {
     width: 330,
@@ -389,12 +478,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 25,
     justifyContent: 'center',
-    marginTop: 30
+    marginTop: 20
   },
-  passwordw: {
-    color: "#DBDBDB",
-    fontSize: 20,
-    marginLeft: 20
+  password2: {
+    width: 330,
+    height: 60,
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    justifyContent: 'center',
+    marginTop: 20
+  },
+  uesrname: {
+    width: 330,
+    height: 60,
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    justifyContent: 'center',
+    marginTop: 40
   },
   rf: {
     flexDirection: "row",
@@ -427,6 +527,10 @@ const styles = StyleSheet.create({
   or: {
     flexDirection: "row",
     marginTop: 50
+  },
+  or2: {
+    flexDirection: "row",
+    marginTop: 30
   },
   orline: {
     width: 130,
