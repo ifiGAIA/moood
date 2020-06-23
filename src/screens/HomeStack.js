@@ -20,7 +20,7 @@ const HomeStack = ({navigation}) =>
     title:"H O M E",
     headerTintColor: '#000',
     headerStyle: { backgroundColor: '#FAF9F9'},
-    headerShown: false
+    headerShown: false,
   }}
   />
   </Stack.Navigator>

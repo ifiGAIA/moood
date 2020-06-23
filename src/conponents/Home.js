@@ -7,7 +7,42 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
+import { Audio } from 'expo-av';
 const Home = ({navigation}) => {
+
+  const PlayAngry = async () => {
+    const soundObject = new Audio.Sound();
+    try {
+        await soundObject.loadAsync(require('../img/btn2.mp3'));
+        await soundObject.playAsync();
+        // Your sound is playing!
+    } catch (error) {
+        // An error occurred!
+    };
+    navigation.navigate("RedButton")
+  };
+  const PlaySad = async () => {
+    const soundObject = new Audio.Sound();
+    try {
+        await soundObject.loadAsync(require('../img/btn2.mp3'));
+        await soundObject.playAsync();
+        // Your sound is playing!
+    } catch (error) {
+        // An error occurred!
+    };
+    navigation.navigate("YellowButton")
+  };
+  const PlayHappy = async () => {
+    const soundObject = new Audio.Sound();
+    try {
+        await soundObject.loadAsync(require('../img/btn2.mp3'));
+        await soundObject.playAsync();
+        // Your sound is playing!
+    } catch (error) {
+        // An error occurred!
+    };
+    navigation.navigate("Happysave")
+  };
   console.log(navigation)
   return (
     <ScrollView style={styles.container}>
@@ -16,9 +51,9 @@ const Home = ({navigation}) => {
       <Image style={styles.iam} source={{url:beok[0].iam}}/>
       <View style={styles.line}></View>
       <Image style={styles.back} source={{url:beok[0].back}}/>
-      <TouchableOpacity onPress={() => navigation.navigate("RedButton")}><Image style={styles.angry} source={{url:beok[0].angry}}/></TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("YellowButton")}><Image style={styles.sad} source={{url:beok[0].sad}}/></TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Happysave")}><Image style={styles.happy} source={{url:beok[0].happy}}/></TouchableOpacity>
+      <TouchableOpacity onPress={()=>{PlayAngry()}}><Image style={styles.angry} source={{url:beok[0].angry}}/></TouchableOpacity>
+      <TouchableOpacity onPress={() =>{PlaySad()}}><Image style={styles.sad} source={{url:beok[0].sad}}/></TouchableOpacity>
+      <TouchableOpacity onPress={() =>{PlayHappy()}}><Image style={styles.happy} source={{url:beok[0].happy}}/></TouchableOpacity>
       </View>
     </ScrollView>
   

@@ -4,28 +4,49 @@ import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
 import beok from "../json/json.json"
 import { setConfigurationAsync } from 'expo/build/AR';
-
+import {Calendar, CalendarList, Agenda,LocaleConfig} from 'react-native-calendars';
 const Stack = createStackNavigator();
 const Daily = ({navigation}) => {
     console.log(navigation)
-
+    const onDayPress = (day) => {
+        // setSelected(day.dateString);
+        navigation.navigate("Content")
+      };
     return (
     <ScrollView style={styles.container}>
              <View style={styles.date}>
                  <Text style={styles.wday}>2020</Text>
              </View>
              <View style={styles.day}>
-                 <Text style={styles.dayw}>5</Text>
-             </View>
-             <View style={styles.moodbtn}>
+                 <Text style={styles.dayw}>6</Text>
+             
+             {/* <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.angry} source={{url:beok[0].angry}}/></TouchableOpacity>
              </View>
              <View style={styles.dayform}>
-                 <View style={styles.formb}>
-             {/* <Image style={styles.form} source={{url:beok[1].form}}/> */}
-             </View>
-             </View>
-           
+             </View> */}
+             <Calendar
+             disableMonthChange={true}
+            //  onDayPress={onDayPress}
+             hideExtraDays={true}
+            
+              style={{
+               width:340,
+               height:380,
+               backgroundColor:"#4E7E8C",
+               marginTop:50,
+               borderRadius:30,
+               
+              }}
+              theme={{
+                  backgroundColor:"#000",
+                  calendarBackground:"#4E7E8C",
+                  arrowColor: '#fff',
+                  todayTextColor: '#fff',
+                  
+              }}
+            />
+            </View>
     </ScrollView>
     );
 
