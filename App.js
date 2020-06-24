@@ -80,6 +80,8 @@ const Login = ({ navigation }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
+
+  
   const onSignIn = async () => {
     setError(" ");
     setLoading(true);
@@ -114,6 +116,7 @@ const Login = ({ navigation }) => {
     <TouchableOpacity onPress={onSignIn}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
    );
   };
+
   if(count==0)
   return (
     <View style={styles.container}>
@@ -162,7 +165,7 @@ const Login = ({ navigation }) => {
           <View style={styles.orline}></View>
         </View>
         <View style={styles.media}>
-          <Image style={styles.fbgtw} source={{ url: beok[0].fb }} />
+          <TouchableOpacity><Image style={styles.fbgtw} source={{ url: beok[0].fb }} /></TouchableOpacity>
           <Image style={styles.fbgtw} source={{ url: beok[0].google }} />
           <Image style={styles.fbgtw} source={{ url: beok[0].twitter }} />
         </View>
@@ -270,6 +273,8 @@ const App = () => {
       firebase.initializeApp(firebaseConfig);
    }
   }, []);
+
+
 
   if (!isLoadingComplete) {
     return null;

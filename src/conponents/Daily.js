@@ -5,6 +5,7 @@ import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
 import beok from "../json/json.json"
 import { setConfigurationAsync } from 'expo/build/AR';
 import {Calendar, CalendarList, Agenda,LocaleConfig} from 'react-native-calendars';
+import DatePicker from 'react-native-modern-datepicker';
 const Stack = createStackNavigator();
 const Daily = ({navigation}) => {
     console.log(navigation)
@@ -25,7 +26,7 @@ const Daily = ({navigation}) => {
              </View>
              <View style={styles.dayform}>
              </View> */}
-             <Calendar
+             {/* <Calendar
              disableMonthChange={true}
             //  onDayPress={onDayPress}
              hideExtraDays={true}
@@ -45,6 +46,26 @@ const Daily = ({navigation}) => {
                   todayTextColor: '#fff',
                   
               }}
+            /> */}
+            <DatePicker
+            options={{
+                backgroundColor:"#4E7E8C",
+                textHeaderColor: '#4E7E8C',
+                textSecondaryColor: '#fff',
+                mainColor: '#4E7E8C',
+                selectedTextColor: '#05495D',
+                textDefaultColor: '#05495D',
+                
+            }}
+            style={{
+                width:340,
+               height:380,
+               marginTop:50,
+               borderRadius:30,
+            }}
+            mode="calendar"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
             />
             </View>
     </ScrollView>
