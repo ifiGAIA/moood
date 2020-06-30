@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState,useContext }from 'react';
 import { StyleSheet, Text, View,Image,ScrollView,Linking,TouchableOpacity} from 'react-native';
 import { Input } from 'react-native-elements';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
@@ -7,10 +7,14 @@ import beok from "../json/json.json"
 import { setConfigurationAsync } from 'expo/build/AR';
 import { TextInput } from 'react-native-gesture-handler';
 import * as firebase from "firebase";
+import {StoreContext} from "../stores/Store";
+import { Tile, ListItem, Icon } from "react-native-elements";
+
 const Stack = createStackNavigator();
 const Setting = ({navigation}) => {
     console.log(navigation)
-    
+    const {meState} = useContext(StoreContext);
+    const [me, setMe] = meState;
     const onSignOut = () => {
         firebase.auth().signOut();
         navigation.navigate("Login");
@@ -25,12 +29,19 @@ const Setting = ({navigation}) => {
         <Image style={styles.username} source={{url:beok[2].user}}/>
         <View style={styles.usern}>
         <Text style={styles.usernamew}>Username</Text>
+        {/* <ListItem
+          title="Username"
+          rightElement={() => <Text>{me.user}</Text>}
+          hideChevron
+        /> */}
         <TextInput
-        placeholder="yiiii_6262"
+        // placeholder="yiiii_6262"
+        placeholder={me.user}
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"
         />
+        
         </View>
         </View>
         <View style={styles.email}>
@@ -38,7 +49,8 @@ const Setting = ({navigation}) => {
         <View style={styles.emailn}>
         <Text style={styles.emailw}>Email</Text>
         <TextInput
-        placeholder="2020app@gmail.com"
+        // placeholder="2020app@gmail.com"
+        placeholder={me.mail}
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"

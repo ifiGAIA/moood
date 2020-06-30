@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator, DrawerActions } from '@react-navigation/stack';
@@ -18,6 +18,7 @@ import beok from "./src/json/json.json";
 import { TextInput } from 'react-native-gesture-handler';
 import { StoreProvider } from "./src/stores/Store.js"
 import * as firebase from "firebase";
+import { StoreContext } from "./src/stores/Store.js";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const MyTab = () => {
@@ -80,7 +81,8 @@ const Login = ({ navigation }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
-
+  const { meState } = useContext(StoreContext);
+  const [me, setMe] = meState;
   
   const onSignIn = async () => {
     setError(" ");
@@ -117,6 +119,13 @@ const Login = ({ navigation }) => {
    );
   };
 
+  const onChangeText = (email) => {
+   
+    setEmail(email);
+    
+    setMe({ ...me, mail:email })
+  }
+
   if(count==0)
   return (
     <View style={styles.container}>
@@ -137,6 +146,7 @@ const Login = ({ navigation }) => {
           keyboardType="email-address"
           value={email}
           onChangeText={(email) => setEmail(email)}
+        
           />
         </View>
         <View style={styles.password}>
@@ -187,11 +197,9 @@ const Login = ({ navigation }) => {
             style={{ fontSize: 20, marginLeft: 20, width: 290 }}
             placeholder="User name"
             placeholderTextColor="#DBDBDB"
-            // autoCorrect={false}
-            // autoCapitalize="none"
-            // keyboardType="email-address"
-            // value={email}
-            // onChangeText={(email) => setEmail(email)}
+            value={me.user}
+        onChangeText={(user) => setMe({ ...me, user })}
+            
           />
         </View>
         <View style={styles.email2}>
@@ -202,8 +210,9 @@ const Login = ({ navigation }) => {
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="email-address"
-            value={email}
-            onChangeText={(email) => setEmail(email)}
+            value={email,me.mail}
+            onChangeText={onChangeText}
+            
           />
         </View>
         <View style={styles.password2}>
@@ -273,8 +282,6 @@ const App = () => {
       firebase.initializeApp(firebaseConfig);
    }
   }, []);
-
-
 
   if (!isLoadingComplete) {
     return null;

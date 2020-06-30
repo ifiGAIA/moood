@@ -10,7 +10,7 @@ const Friends = ({navigation}) => {
              <View style={styles.line}></View>
              <View style={styles.date}>
                  <Text style={styles.wd}>DATE</Text>
-                 <Text style={styles.wday}>2 0 2 0 . 0 5 . 1 1 </Text>
+                 <Text style={styles.wday}>2020.07.03</Text>
              </View>
          </View>
          <View style={styles.h2}>
@@ -93,7 +93,8 @@ const Friends = ({navigation}) => {
         color:"#fff",
         fontSize:20,
         fontWeight:"bold",
-        marginTop:20
+        marginTop:20,
+        letterSpacing:5
     },
     h2:{
         alignItems: 'center',

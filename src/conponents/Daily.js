@@ -19,13 +19,20 @@ const Daily = ({navigation}) => {
                  <Text style={styles.wday}>2020</Text>
              </View>
              <View style={styles.day}>
-                 <Text style={styles.dayw}>6</Text>
+                 <Text style={styles.dayw}>7</Text>
              
-             {/* <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.angry} source={{url:beok[0].angry}}/></TouchableOpacity>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1} source={{url:beok[0].happy}}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2} source={{url:beok[0].happy}}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3} source={{url:beok[0].sad}}/></TouchableOpacity>
              </View>
              <View style={styles.dayform}>
-             </View> */}
+             <Image style={styles.form} source={{url:beok[1].form}}/>
+             </View>
              {/* <Calendar
              disableMonthChange={true}
             //  onDayPress={onDayPress}
@@ -47,15 +54,15 @@ const Daily = ({navigation}) => {
                   
               }}
             /> */}
-            <DatePicker
+            {/* <DatePicker
             options={{
                 backgroundColor:"#4E7E8C",
-                textHeaderColor: '#4E7E8C',
+                textHeaderColor: '#fff',
                 textSecondaryColor: '#fff',
-                mainColor: '#4E7E8C',
+                mainColor: '#fff',
                 selectedTextColor: '#05495D',
                 textDefaultColor: '#05495D',
-                
+               
             }}
             style={{
                 width:340,
@@ -64,9 +71,7 @@ const Daily = ({navigation}) => {
                borderRadius:30,
             }}
             mode="calendar"
-            confirmBtnText="Confirm"
-            cancelBtnText="Cancel"
-            />
+            /> */}
             </View>
     </ScrollView>
     );
@@ -105,33 +110,43 @@ const Daily = ({navigation}) => {
         fontWeight:"bold",
     },
     dayform:{
-        alignItems: 'center',
-        marginTop:50
-    },
-    formb:{
+        marginTop:35,
         width:340,
-        height:380,
+        height:400,
         backgroundColor:"#4E7E8C",
         borderRadius:30,
-        alignItems: 'center',
+        flexDirection:"row",
+        justifyContent:"center",
     },
     form:{
         width:280,
-        height:345,
-       marginTop:18
+        height:309,
+        marginTop:30
     },
     moodbtn:{
     alignItems: 'center',
-    zIndex:3,
+    zIndex:10,
     },
-    angry:{
+    mood1:{
         position:"absolute",
         width:30,
         height:36.53,
-        // width:90,
-        // height:109.59,
         marginTop:90,
-        left:-15
+        right:118
+    },
+    mood2:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:73
+    },
+    mood3:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:30
     },
   });
 
