@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity } from 'react-native';
 import beok from "../json/json.json"
 
 const Friends = ({navigation}) => {

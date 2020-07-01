@@ -1,18 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Linking, TouchableOpacity, TextInput, Input, AsyncStorage  } from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator, DrawerActions } from '@react-navigation/stack';
+import { StyleSheet, Text, View, Image, ScrollView,TouchableOpacity, TextInput, Input, AsyncStorage  } from 'react-native';
 import beok from "../json/json.json"
-import { setConfigurationAsync } from 'expo/build/AR';
 import { StoreContext } from "../stores/Store.js";
+
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
-const Stack = createStackNavigator();
 const Redsave = ({ navigation }) => {
     console.log(navigation)
-    const [count, setCount] = useState(0);
     const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;
+    const [input, setInput] = useState('');
 
     const saveToAsyncStorage = () => {
         try {
@@ -33,7 +30,7 @@ const Redsave = ({ navigation }) => {
                 <View style={styles.line}></View>
                 <View style={styles.date}>
                     <Text style={styles.wd}>DATE</Text>
-                    <Text style={styles.wday}>2 0 2 0 . 0 5 . 0 5 </Text>
+                    <Text style={styles.wday}>2 0 2 0 . 0 7 . 0 3 </Text>
                 </View>
             </View>
             <View style={styles.h1}>
@@ -50,13 +47,19 @@ const Redsave = ({ navigation }) => {
                         placeholderTextColor="#fff"
                         color="#fff"
                         multiline="true"
-                        onChangeText={(input) => setMe({
-                             ...me, why1: [...me.why1, input] 
-                            })
-                        }
+                        value={input}
+                        onChangeText={(input) => setInput(input)}
                     />
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.sbtn} source={{ url: beok[1].rsave }} /></TouchableOpacity>
+                <TouchableOpacity 
+                    onPress={() => {
+                        navigation.navigate("Daily");
+                        setMe({...me, why1:[...me.why1, input]});
+                        setInput('');
+                    }}
+                >
+                    <Image style={styles.sbtn} source={{ url: beok[1].rsave }} />
+                    </TouchableOpacity>
             </View>
 
         </ScrollView>

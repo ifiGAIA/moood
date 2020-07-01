@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 // import albumData from "../json/albums.json";
 import meJson from "../json/me.json";
+import userJson from "../json/uesr.json";
 import { AsyncStorage } from "react-native";
 
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
@@ -10,11 +11,13 @@ export const StoreContext = createContext();
 
 // Make a Provider
 export const StoreProvider = ({ children }) => {  
-//   const [albums, setAlbums] = useState(albumData.albumList);
+  const [isLogin, setIsLogin] = useState(false);
   const [me, setMe] = useState(meJson);
+  // const [use,setUse] = useState(userJson);
   const store = {
-    // albumsState: [albums, setAlbums],
+    isLoginState: [isLogin, setIsLogin],
     meState: [me, setMe],
+    // userState: [use, setUse]
   };
 
 const restoreState = async () => {

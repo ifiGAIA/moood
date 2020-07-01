@@ -1,11 +1,8 @@
 import React, { useState,useEffect,useRef }from 'react';
-import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity,Animated, Button} from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,Animated} from 'react-native';
 import beok from "../json/json.json"
 import { Audio } from 'expo-av';
 import LottieView from "lottie-react-native";
-const Stack = createStackNavigator();
 
 const RedButton  = ({navigation}) => {
     console.log(navigation)
@@ -33,7 +30,7 @@ const RedButton  = ({navigation}) => {
 
     const animation = useRef(null);
 
-    if(count<=40)
+    if(count<=10)
     return (
         <ScrollView style={styles.container}>
           <Image style={styles.bp} source={{url:beok[0].backgr}}/>
@@ -45,7 +42,6 @@ const RedButton  = ({navigation}) => {
         loop={false}
         style={styles.lo}
       />
-      {/* <TouchableOpacity  onPress={()=>{PlayAudio()}} ><Image style={styles.rbtn} source={{url:beok[0].rbtn}}/></TouchableOpacity> */}
       <TouchableOpacity  onPress={()=>{PlayAudio()}} ><View style={styles.btnt}></View></TouchableOpacity>
       </View>
       <View style={styles.bottombtn}>
@@ -66,7 +62,6 @@ const RedButton  = ({navigation}) => {
         loop={false}
         style={styles.lo2}
       />
-      {/* <TouchableOpacity  onPress={()=>{PlayAudio()}} ><Image style={styles.rbtn} source={{url:beok[0].rbtn}}/></TouchableOpacity> */}
       <TouchableOpacity  onPress={()=>{PlayAudio()}} ><View style={styles.btnt}></View></TouchableOpacity>
       </View>
       <View style={styles.bottombtn}>

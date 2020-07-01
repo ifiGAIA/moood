@@ -1,5 +1,5 @@
 import React, { useState,useEffect,useContext } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity,ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator, DrawerActions } from '@react-navigation/stack';
 import { Input } from 'react-native-elements';
@@ -19,6 +19,9 @@ import { TextInput } from 'react-native-gesture-handler';
 import { StoreProvider } from "./src/stores/Store.js"
 import * as firebase from "firebase";
 import { StoreContext } from "./src/stores/Store.js";
+
+const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
+const HAS_SET_KEY = "HAS_SET_KEY";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const MyTab = () => {
@@ -83,28 +86,42 @@ const Login = ({ navigation }) => {
   const [count, setCount] = useState(0);
   const { meState } = useContext(StoreContext);
   const [me, setMe] = meState;
-  
+  const { isLoginState } = useContext(StoreContext);
+  const [isLogin, setIsLogin] = isLoginState;
+  const [msg, setMsg] = useState(" ");
+
   const onSignIn = async () => {
-    setError(" ");
+    setMsg(" ");
     setLoading(true);
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      navigation.navigate("Home");
+      setIsLogin(true);
     } catch (err1) {
-      try {
-        await firebase.auth().createUserWithEmailAndPassword(email, password);
+      setMsg("尚未註冊...");
+    } finally {
+        setLoading(false);
         setEmail("");
         setPassword("");
         setError("");
-        navigation.navigate("Home");
-      } catch (err2) {
-        setError(err2.message);
-      }
-    } finally {
-        setLoading(false);
+        
     }
   };
-
+  const onSignUp = async () => {
+    setLoading(true);
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      setIsLogin(true);
+      setEmail("");
+      setPassword("");
+      setError("");
+    } catch (err) {
+      setError(err.message);
+      setEmail("");
+      setPassword("");
+      setLoading(false);
+    }
+  };
+  
   const renderButton = () => {
    if (loading) {
       return <ActivityIndicator size="large" style={{ marginTop: 30 }} />;
@@ -115,7 +132,7 @@ const Login = ({ navigation }) => {
    );
    else
    return (
-    <TouchableOpacity onPress={onSignIn}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
+    <TouchableOpacity onPress={onSignUp}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
    );
   };
 
@@ -125,6 +142,19 @@ const Login = ({ navigation }) => {
     
     setMe({ ...me, mail:email })
   }
+
+  const saveToAsyncStorage = () => {
+    try {
+        AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(me));
+        AsyncStorage.setItem(HAS_SET_KEY, JSON.stringify(true));
+    } catch (error) {
+        // Error saving data
+    }
+};
+
+useEffect(() => {
+    saveToAsyncStorage();
+}, [me]);
 
   if(count==0)
   return (
@@ -145,7 +175,7 @@ const Login = ({ navigation }) => {
           autoCapitalize="none"
           keyboardType="email-address"
           value={email}
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={onChangeText}
         
           />
         </View>
@@ -167,8 +197,8 @@ const Login = ({ navigation }) => {
         </View>
        
         {renderButton()}
-        {/* <Text style={{ padding: 10, fontSize: 16, color: "red" }}>{error}</Text> */}
-
+        <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{msg}</Text>
+      <View style={styles.b}>
         <View style={styles.or}>
           <View style={styles.orline}></View>
           <Text style={styles.orw}>or</Text>
@@ -178,6 +208,7 @@ const Login = ({ navigation }) => {
           <TouchableOpacity><Image style={styles.fbgtw} source={{ url: beok[0].fb }} /></TouchableOpacity>
           <Image style={styles.fbgtw} source={{ url: beok[0].google }} />
           <Image style={styles.fbgtw} source={{ url: beok[0].twitter }} />
+        </View>
         </View>
       </View>
     </View>
@@ -230,7 +261,7 @@ const Login = ({ navigation }) => {
         
         {renderButton()}
         {/* <Text style={{ padding: 10, fontSize: 16, color: "red" }}>{error}</Text> */}
-
+     
         <View style={styles.or2}>
           <View style={styles.orline}></View>
           <Text style={styles.orw}>or</Text>
@@ -240,6 +271,7 @@ const Login = ({ navigation }) => {
           <Image style={styles.fbgtw} source={{ url: beok[0].fb }} />
           <Image style={styles.fbgtw} source={{ url: beok[0].google }} />
           <Image style={styles.fbgtw} source={{ url: beok[0].twitter }} />
+       
         </View>
       </View>
     </View>
@@ -249,6 +281,9 @@ const PERSISTENCE_KEY = "ALBUMS_NAVIGATION_STATE";
 const App = () => {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
+  const { isLoginState } = useContext(StoreContext);
+  const [ isLogin, setIsLogin] = isLoginState;
+
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
@@ -286,7 +321,7 @@ const App = () => {
   if (!isLoadingComplete) {
     return null;
   } else {
-    return (
+    return isLogin ? (
       <NavigationContainer
         ref={navigationRef}
         initialState={initialNavigationState}
@@ -295,10 +330,7 @@ const App = () => {
         }
       >
         <Stack.Navigator>
-          <Stack.Screen name="Login" component={Login}
-            options={{
-              headerShown: false
-            }} />
+        
           <Stack.Screen name="Home" component={MyTab}
             options={{
               headerRight: () => <TouchableOpacity onPress={() => navigationRef.current?.navigate('Setting')}>
@@ -387,7 +419,23 @@ const App = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    );
+    ):(
+      <NavigationContainer
+      ref={navigationRef}
+      initialState={initialNavigationState}
+      onStateChange={(state) =>
+        AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))
+      }
+     
+    >
+       <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login}
+            options={{
+              headerShown: false
+            }} />
+           </Stack.Navigator>
+      </NavigationContainer>
+    )
   }
 };
 
@@ -529,16 +577,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 60,
-    // shadowColor:"#fff",
-    // shadowOffset:{width:-2,height:-2},
-    // shadowOpacity:1,
   },
   signinbbinw: {
     color: "#fff"
   },
   or: {
     flexDirection: "row",
-    marginTop: 50
+    marginTop:50
   },
   or2: {
     flexDirection: "row",
@@ -565,7 +610,10 @@ const styles = StyleSheet.create({
     marginLeft: 22,
     marginRight: 22
   },
-
+  b:{
+    alignItems: 'center',
+    bottom:25
+  }
 });
 // export default App;
 export default () => {

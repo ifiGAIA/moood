@@ -1,15 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity } from 'react-native';
+import React,{ useEffect } from 'react';
+import { StyleSheet, Text, View,Image, ScrollView,TouchableOpacity } from 'react-native';
 import beok from "../json/json.json"
-import { 
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
 import { Audio } from 'expo-av';
-const Home = ({navigation}) => {
 
+const Home = ({navigation}) => {
+  // useEffect(() => {
+  //           PlayAudio();
+  //       }, []);
+    
+  //       const PlayAudio = async () => {
+  //           const soundObject = new Audio.Sound();
+  //           try {
+  //               await soundObject.loadAsync(require('../img/bgm.mp3'));
+  //               await soundObject.playAsync();
+  //               // Your sound is playing!
+  //           } catch (error) {
+  //               // An error occurred!
+  //           }
+  //       };
   const PlayAngry = async () => {
     const soundObject = new Audio.Sound();
     try {
@@ -103,14 +111,6 @@ const styles = StyleSheet.create({
     marginTop:50,
     marginLeft:25
   },
-  // setting:{
-  //   width:30,
-  //   height:30,
-  //   left:8
-  // },
-
-    
-    
 });
 
 export default Home;

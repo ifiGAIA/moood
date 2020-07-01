@@ -1,18 +1,16 @@
 import React, { useState,useContext,useEffect }from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,Linking,TouchableOpacity,TextInput,Input} from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input} from 'react-native';
 import beok from "../json/json.json"
-import { setConfigurationAsync } from 'expo/build/AR';
 import { StoreContext } from "../stores/Store.js";
+
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
-const Stack = createStackNavigator();
 const Happysave = ({navigation}) => {
     console.log(navigation)
     const [count, setCount] = useState(0);
     const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;
+    const [input, setInput] = useState('');
 
     const saveToAsyncStorage = () => {
         try {
@@ -50,10 +48,14 @@ const Happysave = ({navigation}) => {
        placeholderTextColor="#fff"
        color="#fff"
        multiline="true"
-       onChangeText={(input) => setMe({ ...me,why3:[...me.why3,input]})}
+       onChangeText={(input) => setInput(input)}
        />
          </View>
-         <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.sbtn} source={{url:beok[1].hsave}}/></TouchableOpacity>
+         <TouchableOpacity onPress={() => {
+                        navigation.navigate("Daily");
+                        setMe({...me, why3:[...me.why3, input]});
+                        setInput('');
+                    }}><Image style={styles.sbtn} source={{url:beok[1].hsave}}/></TouchableOpacity>
          </View>
          
     </ScrollView>

@@ -1,5 +1,5 @@
-import React, { useState,useContext }from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,Linking,TouchableOpacity} from 'react-native';
+import React, { useState,useContext,useEffect }from 'react';
+import { StyleSheet, Text, View,Image,ScrollView,Linking,TouchableOpacity,AsyncStorage} from 'react-native';
 import { Input } from 'react-native-elements';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
@@ -13,12 +13,16 @@ import { Tile, ListItem, Icon } from "react-native-elements";
 const Stack = createStackNavigator();
 const Setting = ({navigation}) => {
     console.log(navigation)
-    const {meState} = useContext(StoreContext);
+    const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;
+    const { isLoginState } = useContext(StoreContext);
+  const [isLogin, setIsLogin] = isLoginState;
+  
     const onSignOut = () => {
         firebase.auth().signOut();
-        navigation.navigate("Login");
+        setIsLogin(false);
       };
+
     return (
     <View style={styles.container}>
         <View style={styles.h1}>
@@ -29,11 +33,6 @@ const Setting = ({navigation}) => {
         <Image style={styles.username} source={{url:beok[2].user}}/>
         <View style={styles.usern}>
         <Text style={styles.usernamew}>Username</Text>
-        {/* <ListItem
-          title="Username"
-          rightElement={() => <Text>{me.user}</Text>}
-          hideChevron
-        /> */}
         <TextInput
         // placeholder="yiiii_6262"
         placeholder={me.user}
@@ -57,12 +56,6 @@ const Setting = ({navigation}) => {
         />
         </View>
         </View>
-        {/* <View style={styles.c}>
-        <Image style={styles.cc} source={{url:beok[2].c}}/>
-        <View style={styles.cn}>
-        <Text style={styles.cw}>帳號連結設定</Text>
-        </View>
-        </View> */}
         <View style={styles.h2}>
             <Text style={styles.about}>About us</Text>
         <View style={styles.line}></View>

@@ -1,22 +1,12 @@
 import React, { useState,useRef } from 'react';
-import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity } from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity } from 'react-native';
 import beok from "../json/json.json"
 import { Audio } from 'expo-av';
 import LottieView from "lottie-react-native";
-const Stack = createStackNavigator();
 
 const YellowButton = ({navigation}) => {
     console.log(navigation)
     const [count, setCount] = useState(0);
-
-    // const position = new Animated.ValueXY(0, 0);
-    // useEffect(() => {
-    //   Animated.spring(position, {
-    //     toValue: { x: 350, y: 500 },
-    //   }).start();
-    // }, []);
 
     const PlayAudio = async () => {
       const soundObject = new Audio.Sound();
@@ -46,7 +36,6 @@ const YellowButton = ({navigation}) => {
         loop={false}
         style={styles.lo}
       />
-      {/* <TouchableOpacity  onPress={()=>{PlayAudio()}} ><Image style={styles.rbtn} source={{url:beok[0].rbtn}}/></TouchableOpacity> */}
       <TouchableOpacity  onPress={()=>{PlayAudio()}} ><View style={styles.btnt}></View></TouchableOpacity>
       </View>
       <View style={styles.bottombtn}>
@@ -67,7 +56,6 @@ const YellowButton = ({navigation}) => {
         loop={false}
         style={styles.lo2}
       />
-      {/* <TouchableOpacity  onPress={()=>{PlayAudio()}} ><Image style={styles.rbtn} source={{url:beok[0].rbtn}}/></TouchableOpacity> */}
       <TouchableOpacity  onPress={()=>{PlayAudio()}} ><View style={styles.btnt}></View></TouchableOpacity>
     </View>
     <View style={styles.bottombtn}>

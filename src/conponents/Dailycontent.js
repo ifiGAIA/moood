@@ -1,6 +1,5 @@
 import React, { useState,useContext }from 'react';
 import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity,TextInput, Button } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import beok from "../json/json.json";
 import {StoreContext} from "../stores/Store";
 const Dailycontent = ({navigation}) => {
@@ -27,7 +26,7 @@ const Dailycontent = ({navigation}) => {
          <View style={styles.line2}></View>
              <View style={styles.mood}>
                  <Text style={styles.wm}>DATE</Text>
-                 <Text style={styles.wm2}>2020.05.11</Text>
+                 <Text style={styles.wm2}>2020.07.03</Text>
              </View>
          </View>
          <View style={styles.h2}>
@@ -36,15 +35,15 @@ const Dailycontent = ({navigation}) => {
                  <Text style={styles.wd}>WHY</Text>
          </View>
          </View>
+
          <View style={styles.h3}> 
            {me.why1.map(w1 => (
          <ScrollView style={styles.t1}>
             <Text style={styles.whyw}>{w1}</Text>
+            {/* <Button onPress={() => setMe({...me, why1:[]})} title="delete" /> */}
          </ScrollView>
            ))}
-           <Button onPress={() => setMe({...me, why1:[]})} title="delete" />
          </View>
-       
       </ScrollView>
     );
     else if(count==1) return(
@@ -78,13 +77,9 @@ const Dailycontent = ({navigation}) => {
          {me.why2.map(w2 => (
          <ScrollView style={styles.t1}>
             <Text style={styles.whyw}>{w2}</Text>
+            <Button onPress={() => setMe({...me, why2:[]})} title="delete" />
          </ScrollView>
            ))}
-           <Button onPress={() => setMe({...me, why2:[]})} title="delete" />
-         {/* <View style={styles.t1}>
-         <Text style={styles.whyw}>{me.why2}</Text>
-           <Button onPress={() => setMe({})} title="delete" />
-         </View> */}
          </View>
   
  </ScrollView>
@@ -121,13 +116,9 @@ const Dailycontent = ({navigation}) => {
        {me.why3.map(w3 => (
          <ScrollView style={styles.t1}>
             <Text style={styles.whyw}>{w3}</Text>
+            <Button onPress={() => setMe({...me, why3:[]})} title="delete" />
          </ScrollView>
            ))}
-           <Button onPress={() => setMe({...me, why3:[]})} title="delete" />
-       {/* <View style={styles.t1}>
-       <Text style={styles.whyw}>{me.why3}</Text>
-           <Button onPress={() => setMe({})} title="delete" />
-       </View> */}
        </View>
 
 </ScrollView>

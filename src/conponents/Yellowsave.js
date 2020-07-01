@@ -1,19 +1,16 @@
 import React, { useState,useContext,useEffect}from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,Linking,TouchableOpacity,TextInput,Input} from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input} from 'react-native';
 import beok from "../json/json.json"
-import { setConfigurationAsync } from 'expo/build/AR';
 import { StoreContext } from "../stores/Store.js";
+
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
-const Stack = createStackNavigator();
 const Yellowsave = ({navigation}) => {
     console.log(navigation)
-    const [count, setCount] = useState(0);
     const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;
-    
+    const [input, setInput] = useState('');
+
     const saveToAsyncStorage = () => {
         try {
             AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(me));
@@ -45,15 +42,22 @@ const Yellowsave = ({navigation}) => {
          <View style={styles.h3}> 
          <View style={styles.t1}>
          <TextInput
-       style={{fontSize:20,marginLeft:30,width:265,marginTop:30}}
-       placeholder="點擊以輸入文字"
-       placeholderTextColor="#fff"
-       color="#fff"
-       multiline="true"
-       onChangeText={(input) => setMe({ ...me, why2:[...me.why2,input]})}
-       />
+                style={{fontSize:20,marginLeft:30,width:265,marginTop:30}}
+                placeholder="點擊以輸入文字"
+                placeholderTextColor="#fff"
+                color="#fff"
+                multiline="true"
+                onChangeText={(input) => setInput(input)}
+        />
          </View>
-         <TouchableOpacity onPress={() => navigation.navigate("Daily")}><Image style={styles.sbtn} source={{url:beok[1].ysave}}/></TouchableOpacity>
+         <TouchableOpacity  onPress={() => {
+                        navigation.navigate("Daily");
+                        setMe({...me, why2:[...me.why2, input]});
+                        setInput('');
+                    }}
+                    >
+                        <Image style={styles.sbtn} source={{url:beok[1].ysave}}/>
+                        </TouchableOpacity>
          </View>
          
     </ScrollView>
