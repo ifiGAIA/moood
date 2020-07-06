@@ -51,7 +51,7 @@ const Home = ({navigation}) => {
     };
     navigation.navigate("Happysave")
   };
-  console.log(navigation)
+  // console.log(navigation)
   return (
     <ScrollView style={styles.container}>
       

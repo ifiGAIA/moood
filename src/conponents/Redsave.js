@@ -6,10 +6,11 @@ import { StoreContext } from "../stores/Store.js";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
 const Redsave = ({ navigation }) => {
-    console.log(navigation)
+    // console.log(navigation)
     const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;
     const [input, setInput] = useState('');
+    
 
     const saveToAsyncStorage = () => {
         try {
@@ -23,6 +24,8 @@ const Redsave = ({ navigation }) => {
     useEffect(() => {
         saveToAsyncStorage();
     }, [me]);
+
+    
 
     return (
         <ScrollView style={styles.container}>

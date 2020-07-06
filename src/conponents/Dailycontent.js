@@ -3,10 +3,11 @@ import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Link
 import beok from "../json/json.json";
 import {StoreContext} from "../stores/Store";
 const Dailycontent = ({navigation}) => {
-    console.log(navigation)
+    // console.log(navigation)
     const [count, setCount] = useState(0);
     const {meState} = useContext(StoreContext);
     const [me, setMe] = meState;
+    console.log(me);
     if(count==0)
     return (
         <ScrollView style={styles.container}>
@@ -40,7 +41,7 @@ const Dailycontent = ({navigation}) => {
            {me.why1.map(w1 => (
          <ScrollView style={styles.t1}>
             <Text style={styles.whyw}>{w1}</Text>
-            {/* <Button onPress={() => setMe({...me, why1:[]})} title="delete" /> */}
+            <Button onPress={() => setMe({...me, why1:[]})} title="delete" />
          </ScrollView>
            ))}
          </View>
@@ -205,14 +206,16 @@ why:{
 h3:{
   alignItems: 'center',
   justifyContent: 'center',
-  marginTop:10
+  marginTop:10,
+  flexDirection:"column-reverse",
 },
 t1:{
   width:320,
   height:250,
   backgroundColor:"#A0C8CD",
   borderRadius:30,
-  marginTop:20
+  marginTop:20,
+  
 },
 whyw:{
   color:"#fff",

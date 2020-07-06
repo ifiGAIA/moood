@@ -3,9 +3,9 @@ import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity } from 'react-
 import beok from "../json/json.json"
 
 const Friends = ({navigation}) => {
-    console.log(navigation)
+    // console.log(navigation)
     return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
          <View style={styles.h1}>
              <View style={styles.line}></View>
              <View style={styles.date}>
@@ -13,7 +13,7 @@ const Friends = ({navigation}) => {
                  <Text style={styles.wday}>2020.07.03</Text>
              </View>
          </View>
-         <View style={styles.h2}>
+         <ScrollView contentContainerStyle={styles.h2}>
          <View style={styles.hline}></View>
          <View style={styles.f1}>
          <Image style={styles.f1ph} source={{url:beok[2].f1}}/>
@@ -60,8 +60,11 @@ const Friends = ({navigation}) => {
          </View>
          </View>
          <View style={styles.hline}></View>
+         </ScrollView>
+         <View style={styles.b}>
+             
          </View>
-    </ScrollView>
+    </View>
     );
   };
   
@@ -98,7 +101,8 @@ const Friends = ({navigation}) => {
     },
     h2:{
         alignItems: 'center',
-        marginTop:50
+        marginTop:50,
+        height:100
     },
     hline:{
         backgroundColor:"#82A4AE",
@@ -131,6 +135,10 @@ const Friends = ({navigation}) => {
         width:24.54,
         height:30.09,
         marginLeft:5
+    },
+    b:{
+        marginTop:120,
+        backgroundColor:"#fff"
     },
   });
 

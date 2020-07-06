@@ -6,7 +6,7 @@ import { StoreContext } from "../stores/Store.js";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
 const Happysave = ({navigation}) => {
-    console.log(navigation)
+    // console.log(navigation)
     const [count, setCount] = useState(0);
     const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;

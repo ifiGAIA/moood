@@ -1,15 +1,35 @@
-import React, { useState }from 'react';
+import React, { useState,useContext }from 'react';
 import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input} from 'react-native';
 import beok from "../json/json.json"
+import Swiper from 'react-native-swiper'
 
 const Daily = ({navigation}) => {
-    console.log(navigation)
+
+    let h={url:beok[0].happy}
     return (
     <ScrollView style={styles.container}>
              <View style={styles.date}>
                  <Text style={styles.wday}>2020</Text>
              </View>
+             <Swiper style={styles.wrapper}  dotStyle={styles.dotStyle} 
+             activeDotStyle={styles.activeDotStyle} horizontal={true} loop={false} index={1}>
              <View style={styles.day}>
+                 <Text style={styles.dayw}>6</Text>
+             
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.dayform}>
+             <Image style={styles.form} source={{url:beok[1].form2}}/>
+             </View>
+            </View>
+            <View style={styles.day}>
                  <Text style={styles.dayw}>7</Text>
              
              <View style={styles.moodbtn}>
@@ -19,12 +39,29 @@ const Daily = ({navigation}) => {
              <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2} source={{url:beok[0].happy}}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3} source={{url:beok[0].sad}}/></TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3} source={{url:beok[0].angry}}/></TouchableOpacity>
              </View>
              <View style={styles.dayform}>
              <Image style={styles.form} source={{url:beok[1].form}}/>
              </View>
             </View>
+            <View style={styles.day}>
+                 <Text style={styles.dayw}>8</Text>
+             
+             {/* <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1} source={{url:beok[0].happy}}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2} source={{url:beok[0].happy}}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3} source={{url:beok[0].sad}}/></TouchableOpacity>
+             </View> */}
+             <View style={styles.dayform}>
+             <Image style={styles.form} source={{url:beok[1].form}}/>
+             </View>
+            </View>
+            </Swiper>
     </ScrollView>
     );
 
@@ -35,6 +72,23 @@ const Daily = ({navigation}) => {
     container:{
         backgroundColor:"#05495D",
     },
+    wrapper:{
+        height:540,
+        
+    },
+    dotStyle:{
+        width:10,
+        height:10,
+        borderRadius:999,
+       backgroundColor:"#69929E"
+    },
+    activeDotStyle:{
+        width:10,
+        height:10,
+        borderRadius:999,
+        backgroundColor:"#fff"
+    },
+    
     date:{
         width:90,
         marginTop:50,

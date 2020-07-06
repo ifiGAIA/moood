@@ -12,9 +12,11 @@ import { Tile, ListItem, Icon } from "react-native-elements";
 
 const Stack = createStackNavigator();
 const Setting = ({navigation}) => {
-    console.log(navigation)
+    // console.log(navigation)
     const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;
+    const { userState } = useContext(StoreContext);
+    const [user, setUser] = userState;
     const { isLoginState } = useContext(StoreContext);
   const [isLogin, setIsLogin] = isLoginState;
   
@@ -34,8 +36,8 @@ const Setting = ({navigation}) => {
         <View style={styles.usern}>
         <Text style={styles.usernamew}>Username</Text>
         <TextInput
-        // placeholder="yiiii_6262"
-        placeholder={me.user}
+        placeholder="yiiii_6262"
+        // placeholder={user.user}
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"
@@ -49,7 +51,7 @@ const Setting = ({navigation}) => {
         <Text style={styles.emailw}>Email</Text>
         <TextInput
         // placeholder="2020app@gmail.com"
-        placeholder={me.mail}
+        placeholder={user.mail}
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"

@@ -5,7 +5,7 @@ import { Audio } from 'expo-av';
 import LottieView from "lottie-react-native";
 
 const RedButton  = ({navigation}) => {
-    console.log(navigation)
+    // console.log(navigation)
     const [count, setCount] = useState(0);
 
     const position = new Animated.ValueXY(0, 0);

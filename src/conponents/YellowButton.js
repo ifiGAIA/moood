@@ -5,7 +5,7 @@ import { Audio } from 'expo-av';
 import LottieView from "lottie-react-native";
 
 const YellowButton = ({navigation}) => {
-    console.log(navigation)
+    // console.log(navigation)
     const [count, setCount] = useState(0);
 
     const PlayAudio = async () => {
