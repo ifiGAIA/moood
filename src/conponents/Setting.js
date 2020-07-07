@@ -37,7 +37,7 @@ const Setting = ({navigation}) => {
         <Text style={styles.usernamew}>Username</Text>
         <TextInput
         placeholder="yiiii_6262"
-        // placeholder={user.user}
+        placeholder={user.user}
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"

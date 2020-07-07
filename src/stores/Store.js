@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-// import albumData from "../json/albums.json";
 import meJson from "../json/me.json";
 import userJson from "../json/uesr.json";
 import { AsyncStorage } from "react-native";

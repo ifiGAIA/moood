@@ -30,7 +30,7 @@ const RedButton  = ({navigation}) => {
 
     const animation = useRef(null);
 
-    if(count<=10)
+    if(count<=14)
     return (
         <ScrollView style={styles.container}>
           <Image style={styles.bp} source={{url:beok[0].backgr}}/>

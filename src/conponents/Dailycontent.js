@@ -7,7 +7,8 @@ const Dailycontent = ({navigation}) => {
     const [count, setCount] = useState(0);
     const {meState} = useContext(StoreContext);
     const [me, setMe] = meState;
-    console.log(me);
+    let day = "2020.07.07";
+    // console.log(me);
     if(count==0)
     return (
         <ScrollView style={styles.container}>
@@ -27,7 +28,7 @@ const Dailycontent = ({navigation}) => {
          <View style={styles.line2}></View>
              <View style={styles.mood}>
                  <Text style={styles.wm}>DATE</Text>
-                 <Text style={styles.wm2}>2020.07.03</Text>
+                 <Text style={styles.wm2}>{day}</Text>
              </View>
          </View>
          <View style={styles.h2}>
@@ -39,10 +40,10 @@ const Dailycontent = ({navigation}) => {
 
          <View style={styles.h3}> 
            {me.why1.map(w1 => (
-         <ScrollView style={styles.t1}>
+         <View style={styles.t1}>
             <Text style={styles.whyw}>{w1}</Text>
             <Button onPress={() => setMe({...me, why1:[]})} title="delete" />
-         </ScrollView>
+         </View>
            ))}
          </View>
       </ScrollView>
@@ -65,7 +66,7 @@ const Dailycontent = ({navigation}) => {
              <View style={styles.line2}></View>
              <View style={styles.mood}>
                  <Text style={styles.wm}>DATE</Text>
-                 <Text style={styles.wm2}>2020.05.11</Text>
+                 <Text style={styles.wm2}>{day}</Text>
              </View>
          </View>
          <View style={styles.h2}>
@@ -76,10 +77,10 @@ const Dailycontent = ({navigation}) => {
          </View>
          <View style={styles.h3}> 
          {me.why2.map(w2 => (
-         <ScrollView style={styles.t1}>
+         <View style={styles.t1}>
             <Text style={styles.whyw}>{w2}</Text>
             <Button onPress={() => setMe({...me, why2:[]})} title="delete" />
-         </ScrollView>
+         </View>
            ))}
          </View>
   
@@ -104,7 +105,7 @@ const Dailycontent = ({navigation}) => {
            <View style={styles.line2}></View>
            <View style={styles.mood}>
                <Text style={styles.wm}>DATE</Text>
-               <Text style={styles.wm2}>2020.05.11</Text>
+               <Text style={styles.wm2}>{day}</Text>
            </View>
        </View>
        <View style={styles.h2}>
@@ -115,10 +116,10 @@ const Dailycontent = ({navigation}) => {
        </View>
        <View style={styles.h3}> 
        {me.why3.map(w3 => (
-         <ScrollView style={styles.t1}>
+         <View style={styles.t1}>
             <Text style={styles.whyw}>{w3}</Text>
             <Button onPress={() => setMe({...me, why3:[]})} title="delete" />
-         </ScrollView>
+         </View>
            ))}
        </View>
 
