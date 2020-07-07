@@ -34,7 +34,8 @@ const restoreState = async () => {
         const state_me = JSON.parse(meString);
         const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
         const state_user = JSON.parse(userString);
-        // console.log(state_me);
+        console.log(state_me);
+        console.log(state_user);
         setMe(state_me);
         setUse(state_user);
       }
