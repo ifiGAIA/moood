@@ -34,7 +34,7 @@ const restoreState = async () => {
         const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
         const state_user = JSON.parse(userString);
         console.log(state_me);
-        console.log(state_user);
+        // console.log(state_user);
         setMe(state_me);
         setUse(state_user);
       }
@@ -43,6 +43,7 @@ const restoreState = async () => {
 
   const adjustState = async () =>{
     await AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(meJson));
+    console.log(meJson);
   }
 
   useEffect(() => {

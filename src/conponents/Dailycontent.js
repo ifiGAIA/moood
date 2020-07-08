@@ -7,7 +7,7 @@ const Dailycontent = ({navigation}) => {
     const [count, setCount] = useState(0);
     const {meState} = useContext(StoreContext);
     const [me, setMe] = meState;
-    let day = "2020.07.07";
+    let day = "2020.07.03";
     // console.log(me);
     if(count==0)
     return (
@@ -213,7 +213,7 @@ h3:{
 t1:{
   width:320,
   height:250,
-  backgroundColor:"#A0C8CD",
+  backgroundColor:"#4E7E8C",
   borderRadius:30,
   marginTop:20,
   
@@ -224,7 +224,7 @@ whyw:{
   marginLeft:30,
   width:265,
   marginTop:30
-}
+},
   });
 
 export default Dailycontent;

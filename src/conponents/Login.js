@@ -11,6 +11,21 @@ const HAS_SET_KEY = "HAS_SET_KEY";
 const USER_PERSISTENCE_KEY = "MAIL_PERSISTENCE_KEY";
 const HAS_SET_KEY1 = "HAS_SET_KEY1";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBqVBjsd0lYup9QBOtpwQRxelsakbHKV-Q",
+  authDomain: "logintest-f843a.firebaseapp.com",
+  databaseURL: "https://logintest-f843a.firebaseio.com",
+  projectId: "logintest-f843a",
+  storageBucket: "logintest-f843a.appspot.com",
+  messagingSenderId: "244239715678",
+  appId: "1:244239715678:web:daa106ad69ef257291d3cf",
+  measurementId: "G-NWHE0DB6KT"
+};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+
 const Login = ({ navigation }) => {
     // console.log(navigation)
     const [email, setEmail] = useState(null);
@@ -25,8 +40,12 @@ const Login = ({ navigation }) => {
     const [msg, setMsg] = useState(" ");
     const { userState } = useContext(StoreContext);
     const [user, setUser] = userState;
+    
     // let db = firebase.firestore();
-  
+    // useEffect(()=>{
+    //   firebase.initializeApp(firebaseConfig);
+    // },[])
+
     const onSignIn = async () => {
       setMsg(" ");
       setLoading(true);
@@ -34,7 +53,7 @@ const Login = ({ navigation }) => {
         await firebase.auth().signInWithEmailAndPassword(email, password);
         setIsLogin(true);
       } catch (err1) {
-        setMsg("尚未註冊...");
+        setMsg("Not yet registered...");
       } finally {
           setLoading(false);
           setEmail("");
@@ -43,7 +62,8 @@ const Login = ({ navigation }) => {
           
       }
     };
-    const onSignUp = async () => {
+   
+    const onSignUp = async (user) => {
       setLoading(true);
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -72,6 +92,19 @@ const Login = ({ navigation }) => {
       <TouchableOpacity onPress={onSignUp}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
      );
     };
+
+    useEffect(() => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          setMsg(`${user.email} was the last to login`);
+          setEmail(user.email);
+        } else {
+          setMsg(" ");
+          setEmail("");
+        }
+      });
+    }, []);
+  
   
     const onChangeText = (email) => {
      

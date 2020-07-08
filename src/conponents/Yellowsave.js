@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect}from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input} from 'react-native';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input,AsyncStorage} from 'react-native';
 import beok from "../json/json.json"
 import { StoreContext } from "../stores/Store.js";
 import { Notifications } from "expo";
@@ -10,6 +10,7 @@ import axios from "axios";
 const EXPO_PUSH_ENDPOINT = "https://exp.host/--/api/v2/push/send";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
+
 const Yellowsave = ({navigation}) => {
     // console.log(navigation)
     const { meState } = useContext(StoreContext);
@@ -91,6 +92,7 @@ const Yellowsave = ({navigation}) => {
         try {
             AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(me));
             AsyncStorage.setItem(HAS_SET_KEY, JSON.stringify(true));
+            
         } catch (error) {
             // Error saving data
         }
@@ -106,7 +108,7 @@ const Yellowsave = ({navigation}) => {
              <View style={styles.line}></View>
              <View style={styles.date}>
                  <Text style={styles.wd}>DATE</Text>
-                 <Text style={styles.wday}>2 0 2 0 . 0 5 . 0 5 </Text>
+                 <Text style={styles.wday}>2 0 2 0 . 0 7 . 0 3 </Text>
              </View>
          </View>
          <View style={styles.h1}>

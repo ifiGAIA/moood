@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect }from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input} from 'react-native';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input,AsyncStorage} from 'react-native';
 import beok from "../json/json.json"
 import { StoreContext } from "../stores/Store.js";
 import { Notifications } from "expo";
@@ -68,7 +68,7 @@ const Happysave = ({navigation}) => {
           to: expoPushToken,
           sound: "default",
           title: "你有新訊息",
-          body: "xxx好像需要您的關心!",
+          body: "xxx遇到開心的事了!",
           data: { text: sendMsg },
           _displayInForeground: true,
         };
@@ -92,6 +92,7 @@ const Happysave = ({navigation}) => {
         try {
             AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(me));
             AsyncStorage.setItem(HAS_SET_KEY, JSON.stringify(true));
+          
         } catch (error) {
             // Error saving data
         }
@@ -107,7 +108,7 @@ const Happysave = ({navigation}) => {
              <View style={styles.line}></View>
              <View style={styles.date}>
                  <Text style={styles.wd}>DATE</Text>
-                 <Text style={styles.wday}>2 0 2 0 . 0 5 . 0 5 </Text>
+                 <Text style={styles.wday}>2 0 2 0 . 0 7 . 0 3 </Text>
              </View>
          </View>
          <View style={styles.h1}>

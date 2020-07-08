@@ -92,6 +92,7 @@ const Redsave = ({ navigation }) => {
         try {
             AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(me));
             AsyncStorage.setItem(HAS_SET_KEY, JSON.stringify(true));
+          
         } catch (error) {
             // Error saving data
         }

@@ -116,11 +116,12 @@ const App = () => {
       appId: "1:244239715678:web:daa106ad69ef257291d3cf",
       measurementId: "G-NWHE0DB6KT"
     };
+    // firebase.initializeApp(firebaseConfig);
    if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);
    }
   }, []);
-
+ 
   if (!isLoadingComplete) {
     return null;
   } else {

@@ -5,7 +5,9 @@ import Swiper from 'react-native-swiper'
 
 const Daily = ({navigation}) => {
 
-    let h={url:beok[0].happy}
+    let h={url:beok[0].happy};
+    let a={url:beok[0].angry};
+    let s={url:beok[0].sad}
     return (
     <ScrollView style={styles.container}>
              <View style={styles.date}>
@@ -15,15 +17,44 @@ const Daily = ({navigation}) => {
              activeDotStyle={styles.activeDotStyle} horizontal={true} loop={false} index={1}>
              <View style={styles.day}>
                  <Text style={styles.dayw}>6</Text>
-             
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood1_6} source={h}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood2_6} source={s}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood3_6} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood4_6} source={a}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood5_6} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood6_6} source={s}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood7_6} source={a}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood8_6} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood9_6} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood10_6} source={s}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood11_6} source={h}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood12_6} source={a}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity><Image style={styles.mood13_6} source={h}/></TouchableOpacity>
              </View>
              <View style={styles.dayform}>
              <Image style={styles.form} source={{url:beok[1].form2}}/>
@@ -31,15 +62,14 @@ const Daily = ({navigation}) => {
             </View>
             <View style={styles.day}>
                  <Text style={styles.dayw}>7</Text>
-             
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1} source={{url:beok[0].happy}}/></TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1_7} source={{url:beok[0].happy}}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2} source={{url:beok[0].happy}}/></TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2_7} source={{url:beok[0].happy}}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3} source={{url:beok[0].angry}}/></TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:beok[0].angry}}/></TouchableOpacity>
              </View>
              <View style={styles.dayform}>
              <Image style={styles.form} source={{url:beok[1].form}}/>
@@ -47,7 +77,6 @@ const Daily = ({navigation}) => {
             </View>
             <View style={styles.day}>
                  <Text style={styles.dayw}>8</Text>
-             
              {/* <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1} source={{url:beok[0].happy}}/></TouchableOpacity>
              </View>
@@ -133,21 +162,112 @@ const Daily = ({navigation}) => {
     alignItems: 'center',
     zIndex:10,
     },
-    mood1:{
+    mood1_6:{
         position:"absolute",
         width:30,
         height:36.53,
         marginTop:90,
-        right:118
+        right:118,
     },
-    mood2:{
+    mood2_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:74
+    },
+    mood3_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:30
+    },
+    mood4_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        left:30
+    },
+    mood5_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:163,
+        left:-15
+    },
+    mood6_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:236,
+        right:118,
+    },
+    mood7_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:236,
+        left:74
+    },
+    mood8_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:236,
+        left:30
+    },
+    mood9_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:309,
+        right:74,
+    },
+    mood10_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:309,
+        left:30
+    },
+    mood11_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:309,
+        left:118
+    },
+    mood12_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:382,
+        right:118,
+    },
+    mood13_6:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:382,
+        right:74
+    },
+    mood1_7:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:118,
+    },
+    mood2_7:{
         position:"absolute",
         width:30,
         height:36.53,
         marginTop:90,
         right:73
     },
-    mood3:{
+    mood3_7:{
         position:"absolute",
         width:30,
         height:36.53,
