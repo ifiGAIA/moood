@@ -2,12 +2,23 @@ import React, { useState,useContext }from 'react';
 import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input} from 'react-native';
 import beok from "../json/json.json"
 import Swiper from 'react-native-swiper'
+import {StoreContext} from "../stores/Store";
+import charts from "../json/chart.json";
 
 const Daily = ({navigation}) => {
 
     let h={url:beok[0].happy};
     let a={url:beok[0].angry};
-    let s={url:beok[0].sad}
+    let s={url:beok[0].sad};
+    
+    
+    const { chartState } = useContext(StoreContext);
+    const [chart, setChart] = chartState;
+    const {meState} = useContext(StoreContext);
+    const [me, setMe] = meState;
+    let aa = chart.a
+    let ss = chart.s
+    let hh = chart.h
     return (
     <ScrollView style={styles.container}>
              <View style={styles.date}>
@@ -63,13 +74,19 @@ const Daily = ({navigation}) => {
             <View style={styles.day}>
                  <Text style={styles.dayw}>7</Text>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1_7} source={{url:beok[0].happy}}/></TouchableOpacity>
+             <TouchableOpacity ><Image style={styles.mood1_7} source={h}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood2_7} source={{url:beok[0].happy}}/></TouchableOpacity>
+             <TouchableOpacity ><Image style={styles.mood2_7} source={h}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:beok[0].angry}}/></TouchableOpacity>
+             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:aa}}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:ss}}/></TouchableOpacity>
+             </View>
+             <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:hh}}/></TouchableOpacity>
              </View>
              <View style={styles.dayform}>
              <Image style={styles.form} source={{url:beok[1].form}}/>
@@ -268,6 +285,13 @@ const Daily = ({navigation}) => {
         right:73
     },
     mood3_7:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:30
+    },
+    mood4_7:{
         position:"absolute",
         width:30,
         height:36.53,

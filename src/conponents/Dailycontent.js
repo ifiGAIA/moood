@@ -225,6 +225,13 @@ whyw:{
   width:265,
   marginTop:30
 },
+mood3_7:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:30
+    },
   });
 
 export default Dailycontent;

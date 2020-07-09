@@ -23,7 +23,6 @@ const YellowButton = ({navigation}) => {
 
     const animation = useRef(null);
 
-
     if(count<=20)
     return (
         <ScrollView style={styles.container}>

@@ -10,12 +10,16 @@ import axios from "axios";
 const EXPO_PUSH_ENDPOINT = "https://exp.host/--/api/v2/push/send";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
+const CHART_PERSISTENCE_KEY = "CHART_PERSISTENCE_KEY";
+const HAS_SET_KEY2 = "HAS_SET_KEY2";
 
 const Redsave = ({ navigation }) => {
     // console.log(navigation)
     const { meState } = useContext(StoreContext);
     const [me, setMe] = meState;
     const [input, setInput] = useState('');
+    const { chartState } = useContext(StoreContext);
+    const [chart, setChart] = chartState;
     
     const [expoPushToken, setExpoPushToken] = useState("");
     const [sendMsg, setSendMsg] = useState("");
@@ -92,7 +96,7 @@ const Redsave = ({ navigation }) => {
         try {
             AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(me));
             AsyncStorage.setItem(HAS_SET_KEY, JSON.stringify(true));
-          
+            
         } catch (error) {
             // Error saving data
         }
@@ -101,6 +105,24 @@ const Redsave = ({ navigation }) => {
     useEffect(() => {
         saveToAsyncStorage();
     }, [me]);
+
+    const saveToAsyncStorage2 = () => {
+      try {
+          AsyncStorage.setItem(CHART_PERSISTENCE_KEY, JSON.stringify(chart));
+          AsyncStorage.setItem(HAS_SET_KEY2, JSON.stringify(true));
+        
+      } catch (error) {
+          // Error saving data
+      }
+  };
+
+  useEffect(() => {
+      saveToAsyncStorage2();
+  }, [chart]);
+
+    const saveAngrychart = (chart) => {
+      setChart({...chart,a:"https://i.imgur.com/ua7oyiZ.png"});
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -135,6 +157,7 @@ const Redsave = ({ navigation }) => {
                         setMe({...me, why1:[...me.why1, input]});
                         setInput('');
                         sendPushNotification();
+                        saveAngrychart();
                     }}
                 >
                     <Image style={styles.sbtn} source={{ url: beok[1].rsave }} />
