@@ -20,6 +20,7 @@ const Redsave = ({ navigation }) => {
     const [input, setInput] = useState('');
     const { chartState } = useContext(StoreContext);
     const [chart, setChart] = chartState;
+    const [cin,setCin] = useState("https://i.imgur.com/ua7oyiZ.png");
     
     const [expoPushToken, setExpoPushToken] = useState("");
     const [sendMsg, setSendMsg] = useState("");
@@ -96,7 +97,7 @@ const Redsave = ({ navigation }) => {
         try {
             AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(me));
             AsyncStorage.setItem(HAS_SET_KEY, JSON.stringify(true));
-            
+            // console.log("7755");
         } catch (error) {
             // Error saving data
         }
@@ -118,11 +119,13 @@ const Redsave = ({ navigation }) => {
 
   useEffect(() => {
       saveToAsyncStorage2();
+      
   }, [chart]);
-
-    const saveAngrychart = (chart) => {
-      setChart({...chart,a:"https://i.imgur.com/ua7oyiZ.png"});
-    }
+  //"https://i.imgur.com/ua7oyiZ.png"
+    // const saveAngrychart = () => {
+    //   setCin(cin);
+    //   setChart({...chart,a:[...chart.a,cin]});
+    // }
 
     return (
         <ScrollView style={styles.container}>
@@ -157,7 +160,7 @@ const Redsave = ({ navigation }) => {
                         setMe({...me, why1:[...me.why1, input]});
                         setInput('');
                         sendPushNotification();
-                        saveAngrychart();
+                        setChart({...chart,a:[...chart.a,cin]});
                     }}
                 >
                     <Image style={styles.sbtn} source={{ url: beok[1].rsave }} />

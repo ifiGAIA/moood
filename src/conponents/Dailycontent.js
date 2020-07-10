@@ -42,7 +42,7 @@ const Dailycontent = ({navigation}) => {
            {me.why1.map(w1 => (
          <View style={styles.t1}>
             <Text style={styles.whyw}>{w1}</Text>
-            <Button onPress={() => setMe({...me, why1:[]})} title="delete" />
+            {/* <Button onPress={() => setMe({...me, why1:[]})} title="delete" /> */}
          </View>
            ))}
          </View>
@@ -79,7 +79,7 @@ const Dailycontent = ({navigation}) => {
          {me.why2.map(w2 => (
          <View style={styles.t1}>
             <Text style={styles.whyw}>{w2}</Text>
-            <Button onPress={() => setMe({...me, why2:[]})} title="delete" />
+            {/* <Button onPress={() => setMe({...me, why2:[]})} title="delete" /> */}
          </View>
            ))}
          </View>
@@ -118,7 +118,7 @@ const Dailycontent = ({navigation}) => {
        {me.why3.map(w3 => (
          <View style={styles.t1}>
             <Text style={styles.whyw}>{w3}</Text>
-            <Button onPress={() => setMe({...me, why3:[]})} title="delete" />
+            {/* <Button onPress={() => setMe({...me, why3:[]})} title="delete" /> */}
          </View>
            ))}
        </View>

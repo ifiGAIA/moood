@@ -21,6 +21,7 @@ const Happysave = ({navigation}) => {
     const [input, setInput] = useState('');
     const { chartState } = useContext(StoreContext);
     const [chart, setChart] = chartState;
+    const [cin,setCin] = useState("https://i.imgur.com/7xgIvJF.png");
 
     const [expoPushToken, setExpoPushToken] = useState("");
     const [sendMsg, setSendMsg] = useState("");
@@ -121,9 +122,9 @@ const Happysave = ({navigation}) => {
       saveToAsyncStorage2();
   }, [chart]);
 
-    const saveAngrychart = (chart) => {
-      setChart({...chart,h:"https://i.imgur.com/7xgIvJF.png"});
-    }
+    // const saveAngrychart = () => {
+    //   setChart({...chart,h:"https://i.imgur.com/7xgIvJF.png"});
+    // }
 
     return (
     <ScrollView style={styles.container}>
@@ -156,7 +157,7 @@ const Happysave = ({navigation}) => {
                         setMe({...me, why3:[...me.why3, input]});
                         setInput('');
                         sendPushNotification();
-                        saveAngrychart();
+                        setChart({...chart,h:[...chart.h,cin]});
                     }}><Image style={styles.sbtn} source={{url:beok[1].hsave}}/></TouchableOpacity>
          </View>
          

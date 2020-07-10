@@ -32,15 +32,19 @@ const restoreState = async () => {
     try {
       const hasSetString = await AsyncStorage.getItem(HAS_SET_KEY);
       const hasSet = JSON.parse(hasSetString);
+
       const userSetString = await AsyncStorage.getItem(HAS_SET_KEY1);
       const userSet = JSON.parse(userSetString);
+
       const chartSetString = await AsyncStorage.getItem(HAS_SET_KEY2);
       const chartSet = JSON.parse(chartSetString);
       if (true) {
         const meString = await AsyncStorage.getItem(ME_PERSISTENCE_KEY);
         const state_me = JSON.parse(meString);
+
         const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
         const state_user = JSON.parse(userString);
+
         const chartString = await AsyncStorage.getItem(CHART_PERSISTENCE_KEY);
         const state_chart = JSON.parse(chartString);
         console.log(state_chart);
@@ -53,7 +57,7 @@ const restoreState = async () => {
   };
 
   const adjustState = async () =>{
-    // await AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(meJson));
+    await AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(meJson));
     await AsyncStorage.setItem(CHART_PERSISTENCE_KEY,JSON.stringify(chartJson));
   }
 

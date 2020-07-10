@@ -3,7 +3,6 @@ import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Inpu
 import beok from "../json/json.json"
 import Swiper from 'react-native-swiper'
 import {StoreContext} from "../stores/Store";
-import charts from "../json/chart.json";
 
 const Daily = ({navigation}) => {
 
@@ -11,14 +10,9 @@ const Daily = ({navigation}) => {
     let a={url:beok[0].angry};
     let s={url:beok[0].sad};
     
-    
     const { chartState } = useContext(StoreContext);
     const [chart, setChart] = chartState;
-    const {meState} = useContext(StoreContext);
-    const [me, setMe] = meState;
-    let aa = chart.a
-    let ss = chart.s
-    let hh = chart.h
+    
     return (
     <ScrollView style={styles.container}>
              <View style={styles.date}>
@@ -77,17 +71,26 @@ const Daily = ({navigation}) => {
              <TouchableOpacity ><Image style={styles.mood1_7} source={h}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity ><Image style={styles.mood2_7} source={h}/></TouchableOpacity>
+             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood2_7} source={h}/></TouchableOpacity>
+             </View>
+             {chart.a.map(c1 => ( <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c1}}/></TouchableOpacity>
+             </View>))}
+             {chart.s.map(c2 => ( <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c2}}/></TouchableOpacity>
+             </View>))}
+             {chart.h.map(c3 => ( <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c3}}/></TouchableOpacity>
+             </View>))}
+             {/* <View style={styles.moodbtn}>
+             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:chart.a}}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:aa}}/></TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood4_7} source={{url:chart.s}}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:ss}}/></TouchableOpacity>
-             </View>
-             <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:hh}}/></TouchableOpacity>
-             </View>
+             <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood5_7} source={{url:chart.h}}/></TouchableOpacity>
+             </View> */}
              <View style={styles.dayform}>
              <Image style={styles.form} source={{url:beok[1].form}}/>
              </View>
@@ -296,7 +299,14 @@ const Daily = ({navigation}) => {
         width:30,
         height:36.53,
         marginTop:90,
-        right:30
+        right:25
+    },
+    mood5_7:{
+        position:"absolute",
+        width:30,
+        height:36.53,
+        marginTop:90,
+        right:20
     },
   });
 

@@ -36,6 +36,7 @@ const RedButton  = ({navigation}) => {
           <Image style={styles.bp} source={{url:beok[0].backgr}}/>
         <View style={styles.ph}>
         <Text style={styles.w}>{count}</Text>
+        
         <LottieView
         ref={animation}
         source={require("../json/rbtn1.json")}
@@ -56,6 +57,7 @@ const RedButton  = ({navigation}) => {
           <Image style={styles.bp} source={{url:beok[0].backgr}}/>
         <View style={styles.ph}>
         <Text style={styles.w}>{count}</Text>
+        <Text style={styles.ww}>別氣了，跟小精靈說說發生什麼事吧</Text>
         <LottieView
         ref={animation}
         source={require("../json/rbtn2.json")}
@@ -149,6 +151,12 @@ const RedButton  = ({navigation}) => {
       width:278,
       height:278,
       position:"absolute"
+    },
+    ww:{
+      position:"absolute",
+      color:"#fff",
+      fontSize:20,
+      marginTop:200
     }
   });
 

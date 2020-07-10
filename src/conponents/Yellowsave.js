@@ -20,6 +20,7 @@ const Yellowsave = ({navigation}) => {
     const [input, setInput] = useState('');
     const { chartState } = useContext(StoreContext);
     const [chart, setChart] = chartState;
+    const [cin,setCin] = useState("https://i.imgur.com/W6XOYnX.png");
 
     const [expoPushToken, setExpoPushToken] = useState("");
     const [sendMsg, setSendMsg] = useState("");
@@ -120,9 +121,9 @@ const Yellowsave = ({navigation}) => {
       saveToAsyncStorage2();
   }, [chart]);
 
-    const saveAngrychart = (chart) => {
-      setChart({...chart,s:"https://i.imgur.com/W6XOYnX.png"});
-    }
+    // const saveAngrychart = () => {
+    //   setChart({...chart,s:"https://i.imgur.com/W6XOYnX.png"});
+    // }
     
     return (
     <ScrollView style={styles.container}>
@@ -155,7 +156,7 @@ const Yellowsave = ({navigation}) => {
                         setMe({...me, why2:[...me.why2, input]});
                         setInput('');
                         sendPushNotification();
-                        saveAngrychart();
+                        setChart({...chart,s:[...chart.s,cin]});
                     }}
                     >
                         <Image style={styles.sbtn} source={{url:beok[1].ysave}}/>
@@ -223,7 +224,8 @@ const Yellowsave = ({navigation}) => {
         width:137,
         height:45,
         marginTop:28
-      }
+      },
+      
   });
 
 export default Yellowsave;
