@@ -157,7 +157,7 @@ const Happysave = ({navigation}) => {
                         setMe({...me, why3:[...me.why3, input]});
                         setInput('');
                         sendPushNotification();
-                        setChart({...chart,h:[...chart.h,cin]});
+                        setChart({...chart,a:[...chart.a,cin]});
                     }}><Image style={styles.sbtn} source={{url:beok[1].hsave}}/></TouchableOpacity>
          </View>
          

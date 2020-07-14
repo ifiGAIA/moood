@@ -1,25 +1,19 @@
 import React, { useState,useContext,useEffect }from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,Linking,TouchableOpacity,AsyncStorage} from 'react-native';
-import { Input } from 'react-native-elements';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { StyleSheet, Text, View,Image,TouchableOpacity} from 'react-native';
 import { createStackNavigator ,DrawerActions} from '@react-navigation/stack';
 import beok from "../json/json.json"
-import { setConfigurationAsync } from 'expo/build/AR';
 import { TextInput } from 'react-native-gesture-handler';
 import * as firebase from "firebase";
 import {StoreContext} from "../stores/Store";
-import { Tile, ListItem, Icon } from "react-native-elements";
 
 const Stack = createStackNavigator();
 const Setting = ({navigation}) => {
     // console.log(navigation)
-    const { meState } = useContext(StoreContext);
-    const [me, setMe] = meState;
     const { userState } = useContext(StoreContext);
     const [user, setUser] = userState;
     const { isLoginState } = useContext(StoreContext);
-  const [isLogin, setIsLogin] = isLoginState;
-  
+    const [isLogin, setIsLogin] = isLoginState;
+    // console.log(user);
     const onSignOut = () => {
         firebase.auth().signOut();
         setIsLogin(false);

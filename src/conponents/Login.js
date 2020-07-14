@@ -5,9 +5,6 @@ import { TextInput } from 'react-native-gesture-handler';
 import * as firebase from "firebase";
 import { StoreContext } from "../stores/Store.js";
 
-const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
-const HAS_SET_KEY = "HAS_SET_KEY";
-
 const USER_PERSISTENCE_KEY = "MAIL_PERSISTENCE_KEY";
 const HAS_SET_KEY1 = "HAS_SET_KEY1";
 
@@ -33,8 +30,6 @@ const Login = ({ navigation }) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [count, setCount] = useState(0);
-    const { meState } = useContext(StoreContext);
-    const [me, setMe] = meState;
     const { isLoginState } = useContext(StoreContext);
     const [isLogin, setIsLogin] = isLoginState;
     const [msg, setMsg] = useState(" ");
@@ -58,12 +53,12 @@ const Login = ({ navigation }) => {
           setLoading(false);
           setEmail("");
           setPassword("");
-          setError("");
+          
           
       }
     };
    
-    const onSignUp = async (user) => {
+    const onSignUp = async () => {
       setLoading(true);
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -72,7 +67,8 @@ const Login = ({ navigation }) => {
         setPassword("");
         setError("");
       } catch (err) {
-        setError(err.message);
+        setError('Please enter information');
+      }finally{
         setEmail("");
         setPassword("");
         setLoading(false);
@@ -89,7 +85,7 @@ const Login = ({ navigation }) => {
      );
      else
      return (
-      <TouchableOpacity onPress={onSignUp}><View style={styles.signinbbin}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
+      <TouchableOpacity onPress={onSignUp}><View style={styles.signinbbup}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
      );
     };
 
@@ -110,7 +106,7 @@ const Login = ({ navigation }) => {
      
       setEmail(email);
       
-      setUser({ ...user, mail:email })
+      setUser({ ...user,mail:email})
     }
   
     const saveToAsyncStorage = () => {
@@ -211,7 +207,7 @@ const Login = ({ navigation }) => {
               autoCorrect={false}
               autoCapitalize="none"
               keyboardType="email-address"
-              value={email,user.mail}
+              value={user.email}
               onChangeText={onChangeText}
               
             />
@@ -230,8 +226,8 @@ const Login = ({ navigation }) => {
           </View>
           
           {renderButton()}
-          {/* <Text style={{ padding: 10, fontSize: 16, color: "red" }}>{error}</Text> */}
-       
+          <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{error}</Text>
+          
           <View style={styles.or2}>
             <View style={styles.orline}></View>
             <Text style={styles.orw}>or</Text>
@@ -382,6 +378,15 @@ const Login = ({ navigation }) => {
       alignItems: 'center',
       marginTop: 60,
     },
+    signinbbup: {
+      backgroundColor: "#FF7C85",
+      width: 105,
+      height: 40,
+      borderRadius: 999,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 40,
+    },
     signinbbinw: {
       color: "#fff"
     },
@@ -391,7 +396,7 @@ const Login = ({ navigation }) => {
     },
     or2: {
       flexDirection: "row",
-      marginTop: 30
+      marginTop: 15.5
     },
     orline: {
       width: 130,

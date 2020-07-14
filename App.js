@@ -86,7 +86,8 @@ const App = () => {
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   const { isLoginState } = useContext(StoreContext);
   const [ isLogin, setIsLogin] = isLoginState;
-  
+
+
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {

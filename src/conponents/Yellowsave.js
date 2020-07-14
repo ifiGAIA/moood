@@ -156,7 +156,7 @@ const Yellowsave = ({navigation}) => {
                         setMe({...me, why2:[...me.why2, input]});
                         setInput('');
                         sendPushNotification();
-                        setChart({...chart,s:[...chart.s,cin]});
+                        setChart({...chart,a:[...chart.a,cin]});
                     }}
                     >
                         <Image style={styles.sbtn} source={{url:beok[1].ysave}}/>

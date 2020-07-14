@@ -6,12 +6,14 @@ import {StoreContext} from "../stores/Store";
 
 const Daily = ({navigation}) => {
 
-    let h={url:beok[0].happy};
-    let a={url:beok[0].angry};
-    let s={url:beok[0].sad};
+    let hh={url:beok[0].happy};
+    let aa={url:beok[0].angry};
+    let ss={url:beok[0].sad};
     
     const { chartState } = useContext(StoreContext);
     const [chart, setChart] = chartState;
+
+    //  console.log(chart);
     
     return (
     <ScrollView style={styles.container}>
@@ -23,43 +25,43 @@ const Daily = ({navigation}) => {
              <View style={styles.day}>
                  <Text style={styles.dayw}>6</Text>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood1_6} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood1_6} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood2_6} source={s}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood2_6} source={ss}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood3_6} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood3_6} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood4_6} source={a}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood4_6} source={aa}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood5_6} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood5_6} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood6_6} source={s}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood6_6} source={ss}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood7_6} source={a}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood7_6} source={aa}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood8_6} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood8_6} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood9_6} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood9_6} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood10_6} source={s}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood10_6} source={ss}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood11_6} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood11_6} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood12_6} source={a}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood12_6} source={aa}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity><Image style={styles.mood13_6} source={h}/></TouchableOpacity>
+             <TouchableOpacity><Image style={styles.mood13_6} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.dayform}>
              <Image style={styles.form} source={{url:beok[1].form2}}/>
@@ -68,20 +70,20 @@ const Daily = ({navigation}) => {
             <View style={styles.day}>
                  <Text style={styles.dayw}>7</Text>
              <View style={styles.moodbtn}>
-             <TouchableOpacity ><Image style={styles.mood1_7} source={h}/></TouchableOpacity>
+             <TouchableOpacity ><Image style={styles.mood1_7} source={hh}/></TouchableOpacity>
              </View>
              <View style={styles.moodbtn}>
-             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood2_7} source={h}/></TouchableOpacity>
+             <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood2_7} source={hh}/></TouchableOpacity>
              </View>
              {chart.a.map(c1 => ( <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c1}}/></TouchableOpacity>
              </View>))}
-             {chart.s.map(c2 => ( <View style={styles.moodbtn}>
+             {/* {chart.s.map(c2 => ( <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c2}}/></TouchableOpacity>
              </View>))}
              {chart.h.map(c3 => ( <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c3}}/></TouchableOpacity>
-             </View>))}
+             </View>))} */}
              {/* <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:chart.a}}/></TouchableOpacity>
              </View>

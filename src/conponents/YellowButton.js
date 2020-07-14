@@ -49,7 +49,7 @@ const YellowButton = ({navigation}) => {
          <Image style={styles.bp} source={{url:beok[0].backgy}}/>
      <View style={styles.ph}>
      <Text style={styles.w}>{count}</Text>
-     <Text style={styles.ww}>別難過了，跟小精靈說說發生什麼事吧</Text>
+     {/* <Text style={styles.ww}>別難過了，跟小精靈說說發生什麼事吧</Text> */}
      <LottieView
         ref={animation}
         source={require("../json/bbtn2.json")}

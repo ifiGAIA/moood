@@ -21,6 +21,7 @@ export const StoreProvider = ({ children }) => {
   const [me, setMe] = useState(meJson);
   const [user,setUser] = useState(userJson);
   const [chart,setChart] = useState(chartJson);
+  const [ready, setReady] = useState(false);
   const store = {
     isLoginState: [isLogin, setIsLogin],
     meState: [me, setMe],
@@ -41,19 +42,26 @@ const restoreState = async () => {
       if (true) {
         const meString = await AsyncStorage.getItem(ME_PERSISTENCE_KEY);
         const state_me = JSON.parse(meString);
-
-        const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
-        const state_user = JSON.parse(userString);
+        setMe(state_me);
 
         const chartString = await AsyncStorage.getItem(CHART_PERSISTENCE_KEY);
         const state_chart = JSON.parse(chartString);
-        console.log(state_chart);
-        // console.log(state_user);
-        setMe(state_me);
-        setUse(state_user);
         setChart(state_chart);
+
+        const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
+        const state_user = JSON.parse(userString);
+        setUser(state_user);
+        console.log(state_user);
+        // console.log(state_me);
+        // console.log(state_chart);
+        // console.log('restore from context chart a: ' + chart.a);
+        // console.log('restore from phone chart a: ' + state_chart.a);
+        // setReady(true);
+       
       }
-    } catch (e) {}
+    } catch (e) {
+      // setReady(true);
+    }
   };
 
   const adjustState = async () =>{
@@ -65,6 +73,10 @@ const restoreState = async () => {
     restoreState();
     // adjustState();
   }, []);
+
+  // if(!ready) {
+  //   return null
+  // }
 
   return (
    <StoreContext.Provider value={store}>
