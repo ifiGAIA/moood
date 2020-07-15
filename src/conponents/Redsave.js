@@ -73,7 +73,7 @@ const Redsave = ({ navigation }) => {
           to: expoPushToken,
           sound: "default",
           title: "你有新訊息",
-          body: "xxx好像需要您的關心!",
+          body: "熊熊好像需要您的關心!",
           data: { text: sendMsg },
           _displayInForeground: true,
         };

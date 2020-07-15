@@ -4,6 +4,10 @@ import beok from "../json/json.json";
 import { TextInput } from 'react-native-gesture-handler';
 import * as firebase from "firebase";
 import { StoreContext } from "../stores/Store.js";
+// import "firebase/firestore";
+// import firestore from '@react-native-firebase/firestore';
+// import firebase from "firebase/app";
+// import firestore from 'firebase/firestore';
 
 const USER_PERSISTENCE_KEY = "MAIL_PERSISTENCE_KEY";
 const HAS_SET_KEY1 = "HAS_SET_KEY1";
@@ -40,7 +44,7 @@ const Login = ({ navigation }) => {
     // useEffect(()=>{
     //   firebase.initializeApp(firebaseConfig);
     // },[])
-
+    // db.collection("users").doc(firebase.auth().currentUser.uid).collection("content").doc("1");
     const onSignIn = async () => {
       setMsg(" ");
       setLoading(true);
@@ -62,6 +66,33 @@ const Login = ({ navigation }) => {
       setLoading(true);
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
+        // .then (userCredential => {
+        //   var ref = db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc("1");
+        //   var ref5 = db.collection("users").doc(firebase.auth().currentUser.uid);
+        //   //set data into User database
+        //   ref5.set({
+        //     username:"使用者",
+        //     pic:"https://i.ibb.co/CKctjN7/img-logo.png"
+        //   })
+        //   ref.set({
+        //       no:"1",
+        //       id:1,
+        //       genre:"衛浴",
+        //       pic:"https://github.com/s110719005/app_final_pic/blob/master/pic_bathroom2.png?raw=true",
+        //       todos:[
+        //           {
+        //           key:"1",
+        //           title:"預設",
+        //           note:"備註",
+        //           day:0,
+        //           limit:30,
+        //           safe:true,
+        //           normal:false,
+        //           danger:false
+        //           }
+        //       ] 
+        //   })
+        // });
         setIsLogin(true);
         setEmail("");
         setPassword("");
