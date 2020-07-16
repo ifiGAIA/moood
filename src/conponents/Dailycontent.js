@@ -77,7 +77,7 @@ const Dailycontent = ({navigation}) => {
          </View>
          <View style={styles.h3}> 
          {me.why2.map(w2 => (
-         <View style={styles.t1}>
+         <View style={styles.t1} >
             <Text style={styles.whyw}>{w2}</Text>
             {/* <Button onPress={() => setMe({...me, why2:[]})} title="delete" /> */}
          </View>
@@ -116,7 +116,7 @@ const Dailycontent = ({navigation}) => {
        </View>
        <View style={styles.h3}> 
        {me.why3.map(w3 => (
-         <View style={styles.t1}>
+         <View style={styles.t1} >
             <Text style={styles.whyw}>{w3}</Text>
             {/* <Button onPress={() => setMe({...me, why3:[]})} title="delete" /> */}
          </View>

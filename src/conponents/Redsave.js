@@ -6,12 +6,29 @@ import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 import axios from "axios";
+import * as firebase from "firebase";
 
 const EXPO_PUSH_ENDPOINT = "https://exp.host/--/api/v2/push/send";
+
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
+
 const CHART_PERSISTENCE_KEY = "CHART_PERSISTENCE_KEY";
 const HAS_SET_KEY2 = "HAS_SET_KEY2";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBqVBjsd0lYup9QBOtpwQRxelsakbHKV-Q",
+  authDomain: "logintest-f843a.firebaseapp.com",
+  databaseURL: "https://logintest-f843a.firebaseio.com",
+  projectId: "logintest-f843a",
+  storageBucket: "logintest-f843a.appspot.com",
+  messagingSenderId: "244239715678",
+  appId: "1:244239715678:web:daa106ad69ef257291d3cf",
+  measurementId: "G-NWHE0DB6KT"
+};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const Redsave = ({ navigation }) => {
     // console.log(navigation)
@@ -44,6 +61,7 @@ const Redsave = ({ navigation }) => {
           }
           const token = await Notifications.getExpoPushTokenAsync();
           setExpoPushToken(token);
+          
         } else {
           // alert('Must use physical device for Push Notifications');
         }
@@ -121,11 +139,6 @@ const Redsave = ({ navigation }) => {
       saveToAsyncStorage2();
       
   }, [chart]);
-  //"https://i.imgur.com/ua7oyiZ.png"
-    // const saveAngrychart = () => {
-    //   setCin(cin);
-    //   setChart({...chart,a:[...chart.a,cin]});
-    // }
 
     return (
         <ScrollView style={styles.container}>

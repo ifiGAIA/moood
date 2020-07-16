@@ -50,12 +50,12 @@ const restoreState = async () => {
 
         const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
         const state_user = JSON.parse(userString);
+        // console.log(state_user);
         setUser(state_user);
-        console.log(state_user);
-        // console.log(state_me);
-        // console.log(state_chart);
-        // console.log('restore from context chart a: ' + chart.a);
-        // console.log('restore from phone chart a: ' + state_chart.a);
+        console.log(state_me);
+        console.log(state_chart);
+        console.log('restore from context chart a: ' + chart.a);
+        console.log('restore from phone chart a: ' + state_chart.a);
         // setReady(true);
        
       }

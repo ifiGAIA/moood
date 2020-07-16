@@ -39,7 +39,7 @@ const Login = ({ navigation }) => {
     const [msg, setMsg] = useState(" ");
     const { userState } = useContext(StoreContext);
     const [user, setUser] = userState;
-    
+    const [input,setInput] = useState('');
     // let db = firebase.firestore();
     // useEffect(()=>{
     //   firebase.initializeApp(firebaseConfig);
@@ -65,34 +65,16 @@ const Login = ({ navigation }) => {
     const onSignUp = async () => {
       setLoading(true);
       try {
-        await firebase.auth().createUserWithEmailAndPassword(email, password);
-        // .then (userCredential => {
-        //   var ref = db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc("1");
-        //   var ref5 = db.collection("users").doc(firebase.auth().currentUser.uid);
-        //   //set data into User database
-        //   ref5.set({
-        //     username:"使用者",
-        //     pic:"https://i.ibb.co/CKctjN7/img-logo.png"
-        //   })
-        //   ref.set({
-        //       no:"1",
-        //       id:1,
-        //       genre:"衛浴",
-        //       pic:"https://github.com/s110719005/app_final_pic/blob/master/pic_bathroom2.png?raw=true",
-        //       todos:[
-        //           {
-        //           key:"1",
-        //           title:"預設",
-        //           note:"備註",
-        //           day:0,
-        //           limit:30,
-        //           safe:true,
-        //           normal:false,
-        //           danger:false
-        //           }
-        //       ] 
-        //   })
-        // });
+        await firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then (function(result)
+        {
+          firebase.database()
+          .ref('/users/'+result.user.uid)
+          .set({
+          name: 'test2',
+          gmail: result.user.email
+        })
+      })
         setIsLogin(true);
         setEmail("");
         setPassword("");
@@ -116,7 +98,7 @@ const Login = ({ navigation }) => {
      );
      else
      return (
-      <TouchableOpacity onPress={onSignUp}><View style={styles.signinbbup}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
+      <TouchableOpacity onPress={()=>{onSignUp();setUser({ ...user, user:input })}}><View style={styles.signinbbup}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
      );
     };
 
@@ -225,8 +207,8 @@ const Login = ({ navigation }) => {
               style={{ fontSize: 20, marginLeft: 20, width: 290 }}
               placeholder="User name"
               placeholderTextColor="#DBDBDB"
-              value={user.user}
-          onChangeText={(user) => setUser({ ...user, user })}
+              value={input}
+          onChangeText={(input) => setInput(input)}
               
             />
           </View>

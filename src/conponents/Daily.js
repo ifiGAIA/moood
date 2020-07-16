@@ -1,5 +1,5 @@
 import React, { useState,useContext }from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input} from 'react-native';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input,Button} from 'react-native';
 import beok from "../json/json.json"
 import Swiper from 'react-native-swiper'
 import {StoreContext} from "../stores/Store";
@@ -75,8 +75,10 @@ const Daily = ({navigation}) => {
              <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood2_7} source={hh}/></TouchableOpacity>
              </View>
-             {chart.a.map(c1 => ( <View style={styles.moodbtn}>
+             {/* <Button onPress={() => setChart({...chart, a:[]})} title="delete" /> */}
+             {chart.a.map(c1 => ( <View style={styles.moodbtn} key={c1}>
              <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c1}}/></TouchableOpacity>
+             
              </View>))}
              {/* {chart.s.map(c2 => ( <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() =>navigation.navigate("Content")}><Image style={styles.mood3_7} source={{url:c2}}/></TouchableOpacity>

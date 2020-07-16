@@ -13,7 +13,7 @@ const Setting = ({navigation}) => {
     const [user, setUser] = userState;
     const { isLoginState } = useContext(StoreContext);
     const [isLogin, setIsLogin] = isLoginState;
-    // console.log(user);
+    console.log(user);
     const onSignOut = () => {
         firebase.auth().signOut();
         setIsLogin(false);
@@ -30,8 +30,8 @@ const Setting = ({navigation}) => {
         <View style={styles.usern}>
         <Text style={styles.usernamew}>Username</Text>
         <TextInput
-        placeholder="yiiii_6262"
-        // placeholder={user.user}
+        // placeholder="yiiii_6262"
+        placeholder={user.user}
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"
