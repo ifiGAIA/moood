@@ -72,7 +72,7 @@ const Login = ({ navigation }) => {
           .ref('/users/'+result.user.uid)
           .set({
           name: 'test2',
-          gmail: result.user.email
+          gmail: email
         })
       })
         setIsLogin(true);

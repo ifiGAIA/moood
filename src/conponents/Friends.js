@@ -17,7 +17,7 @@ const Friends = ({navigation}) => {
          <View style={styles.hline}></View>
          <View style={styles.f1}>
          <Image style={styles.f1ph} source={{url:beok[2].f1}}/>
-         <Text style={styles.f1n}>yiiii_6262</Text>
+         <Text style={styles.f1n}>熊熊</Text>
          <View style={styles.m1}>
          <Image style={styles.f1m} source={{url:beok[2].angry}}/>
          <Image style={styles.f1m} source={{url:beok[2].sad}}/>

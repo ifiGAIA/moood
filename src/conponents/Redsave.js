@@ -140,6 +140,17 @@ const Redsave = ({ navigation }) => {
       
   }, [chart]);
 
+const updatefile = () =>{
+ let newReference = firebase.database()
+  .ref('/users/'+firebase.auth().currentUser.uid)
+  .push();
+  newReference
+  .update({
+    content:input
+    
+})
+}
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.h1}>
@@ -174,10 +185,19 @@ const Redsave = ({ navigation }) => {
                         setInput('');
                         sendPushNotification();
                         setChart({...chart,a:[...chart.a,cin]});
+                        updatefile();
                     }}
                 >
                     <Image style={styles.sbtn} source={{ url: beok[1].rsave }} />
                     </TouchableOpacity>
+                    {/* <TouchableOpacity 
+                    onPress={() => {
+                        navigation.navigate("Daily");
+                        updatefile();
+                    }}
+                >
+                    <Image style={styles.sbtn} source={{ url: beok[1].rsave }} />
+                    </TouchableOpacity> */}
             </View>
 
         </ScrollView>
