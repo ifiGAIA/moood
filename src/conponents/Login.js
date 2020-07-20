@@ -1,5 +1,5 @@
 import React, { useState,useEffect,useContext } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity,ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity,ScrollView, AsyncStorage, ActivityIndicator,Dimensions } from 'react-native';
 import beok from "../json/json.json";
 import { TextInput } from 'react-native-gesture-handler';
 import * as firebase from "firebase";
@@ -8,6 +8,9 @@ import { StoreContext } from "../stores/Store.js";
 // import firestore from '@react-native-firebase/firestore';
 // import firebase from "firebase/app";
 // import firestore from 'firebase/firestore';
+
+let screenWidth = Dimensions.get('window').width;
+let screenHeight = Dimensions.get('window').height;
 
 const USER_PERSISTENCE_KEY = "MAIL_PERSISTENCE_KEY";
 const HAS_SET_KEY1 = "HAS_SET_KEY1";
@@ -81,7 +84,7 @@ const Login = ({ navigation }) => {
         setPassword("");
         setError("");
       } catch (err) {
-        setError('Please enter information');
+        setMsg('Please enter information');
       }finally{
         setEmail("");
         setPassword("");
@@ -240,7 +243,7 @@ const Login = ({ navigation }) => {
           </View>
           
           {renderButton()}
-          <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{error}</Text>
+          <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{msg}</Text>
           
           <View style={styles.or2}>
             <View style={styles.orline}></View>
@@ -269,7 +272,7 @@ const Login = ({ navigation }) => {
     title: {
       width: 146,
       height: 50,
-      marginTop: 50
+      marginTop: 60
     },
     sign: {
       flexDirection: "row",
@@ -285,7 +288,7 @@ const Login = ({ navigation }) => {
     },
     signinw: {
       color: "#05495D",
-      fontSize: 15
+      fontSize: 13
     },
     signinb2: {
       backgroundColor: "#69929E",
@@ -297,7 +300,7 @@ const Login = ({ navigation }) => {
     },
     signinw2: {
       color: "#fff",
-      fontSize: 15
+      fontSize: 13
     },
     line: {
       color: "#fff",
@@ -316,7 +319,7 @@ const Login = ({ navigation }) => {
     },
     signupw: {
       color: "#fff",
-      fontSize: 15
+      fontSize: 13
     },
     signupb2: {
       backgroundColor: "#fff",
@@ -328,7 +331,7 @@ const Login = ({ navigation }) => {
     },
     signupw2: {
       color: "#05495D",
-      fontSize: 15
+      fontSize: 13
     },
     email: {
       width: 330,
@@ -344,7 +347,7 @@ const Login = ({ navigation }) => {
       backgroundColor: "#fff",
       borderRadius: 25,
       justifyContent: 'center',
-      marginTop: 20
+      marginTop: 25
     },
     password: {
       width: 330,
@@ -352,7 +355,7 @@ const Login = ({ navigation }) => {
       backgroundColor: "#fff",
       borderRadius: 25,
       justifyContent: 'center',
-      marginTop: 20
+      marginTop: 25
     },
     password2: {
       width: 330,
@@ -360,7 +363,7 @@ const Login = ({ navigation }) => {
       backgroundColor: "#fff",
       borderRadius: 25,
       justifyContent: 'center',
-      marginTop: 20
+      marginTop: 25
     },
     uesrname: {
       width: 330,
@@ -368,11 +371,11 @@ const Login = ({ navigation }) => {
       backgroundColor: "#fff",
       borderRadius: 25,
       justifyContent: 'center',
-      marginTop: 40
+      marginTop: 60
     },
     rf: {
       flexDirection: "row",
-      marginTop: 10
+      marginTop: 15
     },
     rm: {
       width: 105,
@@ -390,7 +393,7 @@ const Login = ({ navigation }) => {
       borderRadius: 999,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 60,
+      marginTop: 95,
     },
     signinbbup: {
       backgroundColor: "#FF7C85",
@@ -406,11 +409,11 @@ const Login = ({ navigation }) => {
     },
     or: {
       flexDirection: "row",
-      marginTop:50
+      marginTop:60
     },
     or2: {
       flexDirection: "row",
-      marginTop: 15.5
+      marginTop: 35
     },
     orline: {
       width: 130,
@@ -437,6 +440,184 @@ const Login = ({ navigation }) => {
       alignItems: 'center',
       bottom:25
     }
+    // container: {
+    //   backgroundColor: "#05495D",
+    //   height:"100%"
+    // },
+    // main: {
+    //   alignItems: 'center'
+    // },
+    // title: {
+    //   width: 146,
+    //   height: 50,
+    //   marginTop: 50
+    // },
+    // sign: {
+    //   flexDirection: "row",
+    //   marginTop: 45
+    // },
+    // signinb: {
+    //   backgroundColor: "#fff",
+    //   width: 100,
+    //   height: 35,
+    //   borderRadius: 999,
+    //   justifyContent: 'center',
+    //   alignItems: 'center'
+    // },
+    // signinw: {
+    //   color: "#05495D",
+    //   fontSize: 15
+    // },
+    // signinb2: {
+    //   backgroundColor: "#69929E",
+    //   width: 100,
+    //   height: 35,
+    //   borderRadius: 999,
+    //   justifyContent: 'center',
+    //   alignItems: 'center'
+    // },
+    // signinw2: {
+    //   color: "#fff",
+    //   fontSize: 15
+    // },
+    // line: {
+    //   color: "#fff",
+    //   fontSize: 25,
+    //   opacity: 0.5,
+    //   marginRight: 30,
+    //   marginLeft: 30
+    // },
+    // signupb: {
+    //   backgroundColor: "#69929E",
+    //   width: 100,
+    //   height: 35,
+    //   borderRadius: 999,
+    //   justifyContent: 'center',
+    //   alignItems: 'center'
+    // },
+    // signupw: {
+    //   color: "#fff",
+    //   fontSize: 15
+    // },
+    // signupb2: {
+    //   backgroundColor: "#fff",
+    //   width: 100,
+    //   height: 35,
+    //   borderRadius: 999,
+    //   justifyContent: 'center',
+    //   alignItems: 'center'
+    // },
+    // signupw2: {
+    //   color: "#05495D",
+    //   fontSize: 15
+    // },
+    // email: {
+    //   width: 330,
+    //   height: 60,
+    //   backgroundColor: "#fff",
+    //   borderRadius: 25,
+    //   justifyContent: 'center',
+    //   marginTop: 60
+    // },
+    // email2: {
+    //   width: 330,
+    //   height: 60,
+    //   backgroundColor: "#fff",
+    //   borderRadius: 25,
+    //   justifyContent: 'center',
+    //   marginTop: 20
+    // },
+    // password: {
+    //   width: 330,
+    //   height: 60,
+    //   backgroundColor: "#fff",
+    //   borderRadius: 25,
+    //   justifyContent: 'center',
+    //   marginTop: 20
+    // },
+    // password2: {
+    //   width: 330,
+    //   height: 60,
+    //   backgroundColor: "#fff",
+    //   borderRadius: 25,
+    //   justifyContent: 'center',
+    //   marginTop: 20
+    // },
+    // uesrname: {
+    //   width: 330,
+    //   height: 60,
+    //   backgroundColor: "#fff",
+    //   borderRadius: 25,
+    //   justifyContent: 'center',
+    //   marginTop: 40
+    // },
+    // rf: {
+    //   flexDirection: "row",
+    //   marginTop: 10
+    // },
+    // rm: {
+    //   width: 105,
+    //   height: 15
+    // },
+    // fp: {
+    //   width: 105,
+    //   height: 15,
+    //   marginLeft: 90
+    // },
+    // signinbbin: {
+    //   backgroundColor: "#FF7C85",
+    //   width: 105,
+    //   height: 40,
+    //   borderRadius: 999,
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   marginTop: 60,
+    // },
+    // signinbbup: {
+    //   backgroundColor: "#FF7C85",
+    //   width: 105,
+    //   height: 40,
+    //   borderRadius: 999,
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   marginTop: 40,
+    // },
+    // signinbbinw: {
+    //   color: "#fff"
+    // },
+    // or: {
+    //   flexDirection: "row",
+    //   marginTop:50
+    // },
+    // or2: {
+    //   flexDirection: "row",
+    //   marginTop: 15.5
+    // },
+    // orline: {
+    //   width: 130,
+    //   height: 1,
+    //   backgroundColor: "#fff"
+    // },
+    // orw: {
+    //   color: "#fff",
+    //   bottom: 9,
+    //   marginLeft: 30,
+    //   marginRight: 30
+    // },
+    // media: {
+    //   flexDirection: "row",
+    //   marginTop: 10
+    // },
+    // fbgtw: {
+    //   width: 40,
+    //   height: 40,
+    //   marginLeft: 22,
+    //   marginRight: 22
+    // },
+    // b:{
+    //   alignItems: 'center',
+    //   bottom:25
+    // }
   });
 
   export default Login;

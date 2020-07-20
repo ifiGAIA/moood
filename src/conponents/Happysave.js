@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect }from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input,AsyncStorage} from 'react-native';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,TextInput,Input,AsyncStorage,Dimensions} from 'react-native';
 import beok from "../json/json.json"
 import { StoreContext } from "../stores/Store.js";
 import { Notifications } from "expo";
@@ -7,6 +7,9 @@ import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 import axios from "axios";
 import * as firebase from "firebase";
+
+let screenWidth = Dimensions.get('window').width;
+let screenHeight = Dimensions.get('window').height;
 
 const EXPO_PUSH_ENDPOINT = "https://exp.host/--/api/v2/push/send";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
@@ -166,7 +169,7 @@ const Happysave = ({navigation}) => {
          <View style={styles.h3}> 
          <View style={styles.t1}>
          <TextInput
-       style={{fontSize:20,marginLeft:30,width:265,marginTop:30}}
+       style={{fontSize:18,marginLeft:30,width:265,marginTop:30}}
        placeholder="點擊以輸入文字"
        placeholderTextColor="#fff"
        color="#fff"
@@ -191,61 +194,122 @@ const Happysave = ({navigation}) => {
   
   
   const styles = StyleSheet.create({
-    container:{
-        backgroundColor:"#05495D",
-    },
-    h1:{
-        flexDirection:"row",
-        marginLeft:20,
-        marginTop:50
-    },
-    line:{
-        width:2,
-        height:80,
-        backgroundColor:"#fff"
-    },
-    date:{
-        marginLeft:10,
-        marginTop:5
-    },
-    wd:{
-        color:"#fff",
-        fontWeight:"bold"
-    },
-    wday:{
-        color:"#fff",
-        fontSize:20,
-        fontWeight:"bold",
-        marginTop:30
-    },
-    line2:{
-        width:2,
-        height:40,
-        backgroundColor:"#fff"
-    },
-    why:{
-        marginLeft:10,
-        marginTop:5
-    },
-    h3:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop:10
-    },
-    t1:{
-        width:320,
-        height:340,
-        backgroundColor:"#4E7E8C",
-        borderRadius:30,
-        shadowColor:"#000",
-        shadowOffset:{width:0,height:3},
-        shadowOpacity:0.2,
-    },
-    sbtn:{
-        width:137,
-        height:45,
-        marginTop:28
-      }
+    container: {
+      backgroundColor: "#05495D",
+  },
+  h1: {
+      flexDirection: "row",
+      marginLeft: 20,
+      marginTop: screenHeight*0.1
+  },
+  h2: {
+    flexDirection: "row",
+    marginLeft: 20,
+    marginTop: screenHeight*0.08
+  },
+  line: {
+      width: 2,
+      height: 80,
+      backgroundColor: "#fff"
+  },
+  date: {
+      marginLeft: 10,
+      marginTop: 5
+  },
+  wd: {
+      color: "#fff",
+      fontWeight: "bold",
+      fontSize:11
+  },
+  wday: {
+      color: "#fff",
+      fontSize: 15,
+      fontWeight: "bold",
+      marginTop: 30
+  },
+  line2: {
+      width: 2,
+      height: 40,
+      backgroundColor: "#fff"
+  },
+  why: {
+      marginLeft: 10,
+      marginTop: 5
+  },
+  h3: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 10
+  },
+  t1: {
+      width: 320,
+      height: 340,
+      backgroundColor: "#4E7E8C",
+      borderRadius: 30,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.2,
+  },
+  sbtn: {
+      width: 137,
+      height: 45,
+      marginTop:screenHeight*0.05
+  }
+    // container:{
+    //     backgroundColor:"#05495D",
+    // },
+    // h1:{
+    //     flexDirection:"row",
+    //     marginLeft:20,
+    //     marginTop:50
+    // },
+    // line:{
+    //     width:2,
+    //     height:80,
+    //     backgroundColor:"#fff"
+    // },
+    // date:{
+    //     marginLeft:10,
+    //     marginTop:5
+    // },
+    // wd:{
+    //     color:"#fff",
+    //     fontWeight:"bold"
+    // },
+    // wday:{
+    //     color:"#fff",
+    //     fontSize:20,
+    //     fontWeight:"bold",
+    //     marginTop:30
+    // },
+    // line2:{
+    //     width:2,
+    //     height:40,
+    //     backgroundColor:"#fff"
+    // },
+    // why:{
+    //     marginLeft:10,
+    //     marginTop:5
+    // },
+    // h3:{
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     marginTop:10
+    // },
+    // t1:{
+    //     width:320,
+    //     height:340,
+    //     backgroundColor:"#4E7E8C",
+    //     borderRadius:30,
+    //     shadowColor:"#000",
+    //     shadowOffset:{width:0,height:3},
+    //     shadowOpacity:0.2,
+    // },
+    // sbtn:{
+    //     width:137,
+    //     height:45,
+    //     marginTop:28
+    //   }
   });
 
 export default Happysave;

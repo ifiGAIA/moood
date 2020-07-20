@@ -74,46 +74,87 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container:{
-      backgroundColor:"#05495D",
+    backgroundColor:"#05495D",
+  
+},
+ph:{
+  alignItems: 'center'
+},
+iam:{
+    width:screenWidth*0.2,//70
+    height:screenHeight*0.04,//40
+    marginTop:70
+},
+line:{
+  width:screenWidth*0.12,//45
+  height:2,
+  backgroundColor:"#fff"
+},
+back:{
+  position:"absolute",
+  width:"100%",
+  height:screenHeight*0.51,//410
+  marginTop:screenHeight*0.25//150
+},
+angry:{
+    width:screenWidth*0.26,//90
+    height:screenHeight*0.147,//109.59
+    marginTop:screenHeight*0.13,//70
+    marginLeft:40
+},
+sad:{
+  width:screenWidth*0.26,//90
+  height:screenHeight*0.148,//111.14
+  marginTop:screenHeight*0.03,//25
+  marginRight:45
+},
+happy:{
+  width:screenWidth*0.26,//90
+  height:screenHeight*0.147,//110.51
+  marginTop:screenHeight*0.06,//50
+  marginLeft:25
+},
+  // container:{
+  //     backgroundColor:"#05495D",
     
-  },
-  ph:{
-    alignItems: 'center'
-  },
-  iam:{
-      width:screenWidth*0.2,//70
-      height:screenHeight*0.06,//40
-      marginTop:50
-  },
-  line:{
-    width:screenWidth*0.12,//45
-    height:2,
-    backgroundColor:"#fff"
-  },
-  back:{
-    position:"absolute",
-    width:"100%",
-    height:screenHeight*0.615,//410
-    marginTop:screenHeight*0.225//150
-  },
-  angry:{
-      width:screenWidth*0.24,//90
-      height:screenHeight*0.164385,//109.59
-      marginTop:screenHeight*0.105,//70
-      marginLeft:40
-  },
-  sad:{
-    width:screenWidth*0.24,//90
-    height:screenHeight*0.16671,//111.14
-    marginTop:screenHeight*0.038,//25
-    marginRight:45
-  },
-  happy:{
-    width:screenWidth*0.24,//90
-    height:screenHeight*0.165765,//110.51
-    marginTop:screenHeight*0.076,//50
-    marginLeft:25
-  },
+  // },
+  // ph:{
+  //   alignItems: 'center'
+  // },
+  // iam:{
+  //     width:screenWidth*0.2,//70
+  //     height:screenHeight*0.06,//40
+  //     marginTop:50
+  // },
+  // line:{
+  //   width:screenWidth*0.12,//45
+  //   height:2,
+  //   backgroundColor:"#fff"
+  // },
+  // back:{
+  //   position:"absolute",
+  //   width:"100%",
+  //   height:screenHeight*0.615,//410
+  //   marginTop:screenHeight*0.225//150
+  // },
+  // angry:{
+  //     width:screenWidth*0.24,//90
+  //     height:screenHeight*0.164385,//109.59
+  //     marginTop:screenHeight*0.105,//70
+  //     marginLeft:40
+  // },
+  // sad:{
+  //   width:screenWidth*0.24,//90
+  //   height:screenHeight*0.16671,//111.14
+  //   marginTop:screenHeight*0.038,//25
+  //   marginRight:45
+  // },
+  // happy:{
+  //   width:screenWidth*0.24,//90
+  //   height:screenHeight*0.165765,//110.51
+  //   marginTop:screenHeight*0.076,//50
+  //   marginLeft:25
+  // },
 });
 
 export default Home;

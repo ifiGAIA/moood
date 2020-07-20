@@ -54,7 +54,7 @@ const MyTab = () => {
               ? require("./src/img/setting1.png")
               : require("./src/img/setting2.png")
           }
-          return <Image source={iconName} style={{ width: 40, height: 40 }} />;
+          return <Image source={iconName} style={{ width: 40, height: 40 ,top:10}} />;
 
         },
       })}
@@ -62,15 +62,27 @@ const MyTab = () => {
         activeBackgroundColor:false,
         inactiveTintColor: '#838383',
         activeTintColor: '#05495D',
-        style: { height: 60,width:"95%", 
+        style: { height: 80,width:"95%", 
         borderTopLeftRadius:25,
         borderTopRightRadius:25,
         left:"2.5%",
         position:"absolute",
          },
         labelStyle: {
-          bottom: 2,
+          bottom: -14,//2
         },
+        // activeBackgroundColor:false,
+        // inactiveTintColor: '#838383',
+        // activeTintColor: '#05495D',
+        // style: { height: 60,width:"95%", 
+        // borderTopLeftRadius:25,
+        // borderTopRightRadius:25,
+        // left:"2.5%",
+        // position:"absolute",
+        //  },
+        // labelStyle: {
+        //   bottom: 2,
+        // },
       }}>
       <Tab.Screen name="HOME" component={HomeStack} />
       <Tab.Screen name="Daily" component={DailyStack} options={{ title: "DAILY" }} />

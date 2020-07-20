@@ -40,6 +40,7 @@ const restoreState = async () => {
       const chartSetString = await AsyncStorage.getItem(HAS_SET_KEY2);
       const chartSet = JSON.parse(chartSetString);
       if (true) {
+        
         const meString = await AsyncStorage.getItem(ME_PERSISTENCE_KEY);
         const state_me = JSON.parse(meString);
         setMe(state_me);
@@ -51,12 +52,13 @@ const restoreState = async () => {
         const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
         const state_user = JSON.parse(userString);
         // console.log(state_user);
+        // setReady(true);
         setUser(state_user);
         console.log(state_me);
         console.log(state_chart);
-        console.log('restore from context chart a: ' + chart.a);
-        console.log('restore from phone chart a: ' + state_chart.a);
-        // setReady(true);
+        // console.log('restore from context chart a: ' + chart.a);
+        // console.log('restore from phone chart a: ' + state_chart.a);
+        
        
       }
     } catch (e) {

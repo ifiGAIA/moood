@@ -80,7 +80,7 @@ const Friends = ({navigation}) => {
     h1:{
         flexDirection:"row",
         marginLeft:20,
-        marginTop:70
+        marginTop:screenHeight*0.1
     },
     line:{
         width:2,
@@ -93,24 +93,25 @@ const Friends = ({navigation}) => {
     },
     wd:{
         color:"#fff",
-        fontWeight:"bold"
+        fontWeight:"bold",
+        fontSize:11
     },
     wday:{
         color:"#fff",
-        fontSize:20,
+        fontSize:15,
         fontWeight:"bold",
         marginTop:20,
         letterSpacing:5
     },
     h2:{
         alignItems: 'center',
-        marginTop:50,
+        marginTop:screenHeight*0.13,//50
         height:100
     },
     hline:{
         backgroundColor:"#82A4AE",
         height:1,
-        width:screenWidth*0.85,//320
+        width:screenWidth*0.88,//320
         marginTop:8
     },
     f1:{
@@ -127,7 +128,7 @@ const Friends = ({navigation}) => {
         fontSize:15,
         margin:3,
         marginLeft:25,
-        width:screenWidth*0.25//80
+        width:screenWidth*0.3//80
     },
     m1:{
         flexDirection:"row",
@@ -143,6 +144,76 @@ const Friends = ({navigation}) => {
         marginTop:120,
         backgroundColor:"#fff"
     },
+    // container:{
+    //     backgroundColor:"#05495D",
+    //   height:"100%"
+    // },
+    // h1:{
+    //     flexDirection:"row",
+    //     marginLeft:20,
+    //     marginTop:70
+    // },
+    // line:{
+    //     width:2,
+    //     height:80,
+    //     backgroundColor:"#fff"
+    // },
+    // date:{
+    //     marginLeft:10,
+    //     marginTop:5
+    // },
+    // wd:{
+    //     color:"#fff",
+    //     fontWeight:"bold"
+    // },
+    // wday:{
+    //     color:"#fff",
+    //     fontSize:20,
+    //     fontWeight:"bold",
+    //     marginTop:20,
+    //     letterSpacing:5
+    // },
+    // h2:{
+    //     alignItems: 'center',
+    //     marginTop:50,
+    //     height:100
+    // },
+    // hline:{
+    //     backgroundColor:"#82A4AE",
+    //     height:1,
+    //     width:screenWidth*0.88,//320
+    //     marginTop:8
+    // },
+    // f1:{
+    //     flexDirection:"row",
+    //     marginTop:10
+    // },
+    // f1ph:{
+    //     width:24.54,
+    //     height:30.09,
+        
+    // },
+    // f1n:{
+    //     color:"#fff",
+    //     fontSize:15,
+    //     margin:3,
+    //     marginLeft:25,
+    //     width:screenWidth*0.25//80
+    // },
+    // m1:{
+    //     flexDirection:"row",
+    //     marginLeft:100,
+    //     width:60
+    // },
+    // f1m:{
+    //     width:24.54,
+    //     height:30.09,
+    //     marginLeft:5
+    // },
+    // b:{
+    //     marginTop:120,
+    //     backgroundColor:"#fff"
+    // },
   });
 
 export default Friends;

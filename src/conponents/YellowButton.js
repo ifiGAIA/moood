@@ -1,8 +1,11 @@
 import React, { useState,useRef } from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,Dimensions } from 'react-native';
 import beok from "../json/json.json"
 import { Audio } from 'expo-av';
 import LottieView from "lottie-react-native";
+
+let screenWidth = Dimensions.get('window').width;
+let screenHeight = Dimensions.get('window').height;
 
 const YellowButton = ({navigation}) => {
     // console.log(navigation)
@@ -49,7 +52,6 @@ const YellowButton = ({navigation}) => {
          <Image style={styles.bp} source={{url:beok[0].backgy}}/>
      <View style={styles.ph}>
      <Text style={styles.w}>{count}</Text>
-     {/* <Text style={styles.ww}>別難過了，跟小精靈說說發生什麼事吧</Text> */}
      <LottieView
         ref={animation}
         source={require("../json/bbtn2.json")}
@@ -69,71 +71,125 @@ const YellowButton = ({navigation}) => {
   
   const styles = StyleSheet.create({
     container:{
-        backgroundColor:"#05495D",
-      
+      backgroundColor:"#05495D",
+    
+  },
+  ph:{
+      alignItems: 'center'
     },
-    ph:{
-        alignItems: 'center'
-      },
-    ybtn:{
-        width:219,
-        height:247,
-        marginTop:180
-    },
-    w:{
-        color:"#fff",
-        fontSize:100,
-        fontWeight:"bold",
-        opacity:0.5,
-        marginTop:35
-    },
-    bp:{
-      position:"absolute",
-      width:"100%",
-      height:640,
-    },
-    bottombtn:{
-      flexDirection:"row",
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop:30
-    },
-    backbtn:{
-      width:60,
-      height:50,
-     
-    },
-    okbtn:{
-      width:60,
-      height:50,
-      marginLeft:250
-    },
-    btnt:{
-      width:200,
-      height:200,
-      borderRadius:999,
-      backgroundColor:"#000",
-      opacity:0,
-      marginTop:220
-    },
-    lo:{
-      marginTop:100,
-      width:300,
-      height:300,
-      position:"absolute"
-    },
-    lo2:{
-      marginTop:107,
-      width:278,
-      height:278,
-      position:"absolute"
-    },
-    ww:{
-      position:"absolute",
+  ybtn:{
+      width:219,
+      height:247,
+      marginTop:180
+  },
+  w:{
       color:"#fff",
-      fontSize:20,
-      marginTop:200
-    }
+      fontSize:85,
+      fontWeight:"bold",
+      opacity:0.5,
+      marginTop:screenHeight*0.08
+  },
+  bp:{
+    position:"absolute",
+    width:"100%",
+    height:screenHeight*0.9,
+  },
+  bottombtn:{
+    flexDirection:"row",
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop:10
+  },
+  backbtn:{
+    width:60,
+    height:50,
+   
+  },
+  okbtn:{
+    width:60,
+    height:50,
+    marginLeft:250
+  },
+  btnt:{
+    width:200,
+    height:200,
+    borderRadius:999,
+    backgroundColor:"#000",
+    opacity:0,
+    marginTop:screenHeight*0.35
+  },
+  lo:{
+    marginTop:screenHeight*0.15,
+    width:300,
+    height:300,
+    position:"absolute"
+  },
+  lo2:{
+    marginTop:screenHeight*0.1585,
+    width:278.5,
+    height:278.5,
+    position:"absolute"
+  },
+    // container:{
+    //     backgroundColor:"#05495D",
+      
+    // },
+    // ph:{
+    //     alignItems: 'center'
+    //   },
+    // ybtn:{
+    //     width:219,
+    //     height:247,
+    //     marginTop:180
+    // },
+    // w:{
+    //     color:"#fff",
+    //     fontSize:100,
+    //     fontWeight:"bold",
+    //     opacity:0.5,
+    //     marginTop:35
+    // },
+    // bp:{
+    //   position:"absolute",
+    //   width:"100%",
+    //   height:640,
+    // },
+    // bottombtn:{
+    //   flexDirection:"row",
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
+    //   marginTop:30
+    // },
+    // backbtn:{
+    //   width:60,
+    //   height:50,
+     
+    // },
+    // okbtn:{
+    //   width:60,
+    //   height:50,
+    //   marginLeft:250
+    // },
+    // btnt:{
+    //   width:200,
+    //   height:200,
+    //   borderRadius:999,
+    //   backgroundColor:"#000",
+    //   opacity:0,
+    //   marginTop:220
+    // },
+    // lo:{
+    //   marginTop:100,
+    //   width:300,
+    //   height:300,
+    //   position:"absolute"
+    // },
+    // lo2:{
+    //   marginTop:107,
+    //   width:278,
+    //   height:278,
+    //   position:"absolute"
+    // },
   });
 
 export default YellowButton;

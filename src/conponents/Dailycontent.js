@@ -1,7 +1,11 @@
 import React, { useState,useContext }from 'react';
-import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity,TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View,Image, TouchableWithoutFeedback, ScrollView,Linking,TouchableOpacity,TextInput, Button,Dimensions } from 'react-native';
 import beok from "../json/json.json";
 import {StoreContext} from "../stores/Store";
+
+let screenWidth = Dimensions.get('window').width;
+let screenHeight = Dimensions.get('window').height;
+
 const Dailycontent = ({navigation}) => {
     // console.log(navigation)
     const [count, setCount] = useState(0);
@@ -130,108 +134,206 @@ const Dailycontent = ({navigation}) => {
   
   const styles = StyleSheet.create({
     container:{
-        backgroundColor:"#05495D",
-        
-    },
-    backx:{
-      alignItems: "flex-end",
-      marginTop:40
-    },
-    backxph:{
-      width:60,
-      height:50,
-    },
-    h1:{
-      flexDirection:"row",
-      marginLeft:20,
-      marginTop:30
+      backgroundColor:"#05495D",
+      
   },
-  h1_1:{
+  backx:{
+    alignItems: "flex-end",
+    marginTop:screenHeight*0.1
+  },
+  backxph:{
+    width:60,
+    height:50,
+  },
+  h1:{
     flexDirection:"row",
     marginLeft:20,
-    marginTop:10
-  },
-  h2:{
-    flexDirection:"row",
-    marginLeft:20,
-    marginTop:30
+    marginTop:40
 },
-  line:{
-      width:2,
-      height:30,
-      backgroundColor:"#fff"
-  },
-  line2:{
-    width:2,
-    height:60,
-    backgroundColor:"#fff"
+h1_1:{
+  flexDirection:"row",
+  marginLeft:20,
+  marginTop:10
 },
-  mood:{
-      marginLeft:10,
-      marginTop:5
-  },
-  wm:{
-      color:"#fff",
-      fontWeight:"bold"
-  },
-  wm2:{
-    color:"#fff",
-    fontWeight:"bold",
-    marginTop:10,
-    fontSize:20,
-    letterSpacing:2,
-},
-  angry:{
-    width:70,
-    height:70,
-   marginLeft:10
-},
-sad:{
-  width:70,
-  height:70,
-  marginLeft:10
-},
-happy:{
-  width:70,
-  height:70,
-  marginLeft:10
-},
-wd:{
-  color:"#fff",
-  fontWeight:"bold"
-},
-why:{
-  marginLeft:10,
-  marginTop:5
-},
-h3:{
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginTop:10,
-  flexDirection:"column-reverse",
-},
-t1:{
-  width:320,
-  height:250,
-  backgroundColor:"#4E7E8C",
-  borderRadius:30,
-  marginTop:20,
-  
-},
-whyw:{
-  color:"#fff",
-  fontSize:20,
-  marginLeft:30,
-  width:265,
+h2:{
+  flexDirection:"row",
+  marginLeft:20,
   marginTop:30
 },
+line:{
+    width:2,
+    height:30,
+    backgroundColor:"#fff"
+},
+line2:{
+  width:2,
+  height:60,
+  backgroundColor:"#fff"
+},
+mood:{
+    marginLeft:10,
+    marginTop:5
+},
+wm:{
+    color:"#fff",
+    fontWeight:"bold",
+    fontSize:11
+},
+wm2:{
+  color:"#fff",
+  fontWeight:"bold",
+  marginTop:10,
+  fontSize:15,
+  letterSpacing:2,
+},
+angry:{
+  width:70,
+  height:70,
+ marginLeft:10
+},
+sad:{
+width:70,
+height:70,
+marginLeft:10
+},
+happy:{
+width:70,
+height:70,
+marginLeft:10
+},
+wd:{
+color:"#fff",
+fontWeight:"bold",
+fontSize:11
+},
+why:{
+marginLeft:10,
+marginTop:5
+},
+h3:{
+alignItems: 'center',
+justifyContent: 'center',
+marginTop:10,
+flexDirection:"column-reverse",
+},
+t1:{
+width:320,
+height:250,
+backgroundColor:"#4E7E8C",
+borderRadius:30,
+marginTop:20,
+
+},
+whyw:{
+color:"#fff",
+fontSize:18,
+marginLeft:30,
+width:265,
+marginTop:30
+},
 mood3_7:{
-        position:"absolute",
-        width:30,
-        height:36.53,
-        marginTop:90,
-        right:30
-    },
+      position:"absolute",
+      width:30,
+      height:36.53,
+      marginTop:90,
+      right:30
+  },
+//     container:{
+//         backgroundColor:"#05495D",
+        
+//     },
+//     backx:{
+//       alignItems: "flex-end",
+//       marginTop:40
+//     },
+//     backxph:{
+//       width:60,
+//       height:50,
+//     },
+//     h1:{
+//       flexDirection:"row",
+//       marginLeft:20,
+//       marginTop:30
+//   },
+//   h1_1:{
+//     flexDirection:"row",
+//     marginLeft:20,
+//     marginTop:10
+//   },
+//   h2:{
+//     flexDirection:"row",
+//     marginLeft:20,
+//     marginTop:30
+// },
+//   line:{
+//       width:2,
+//       height:30,
+//       backgroundColor:"#fff"
+//   },
+//   line2:{
+//     width:2,
+//     height:60,
+//     backgroundColor:"#fff"
+// },
+//   mood:{
+//       marginLeft:10,
+//       marginTop:5
+//   },
+//   wm:{
+//       color:"#fff",
+//       fontWeight:"bold"
+//   },
+//   wm2:{
+//     color:"#fff",
+//     fontWeight:"bold",
+//     marginTop:10,
+//     fontSize:20,
+//     letterSpacing:2,
+// },
+//   angry:{
+//     width:70,
+//     height:70,
+//    marginLeft:10
+// },
+// sad:{
+//   width:70,
+//   height:70,
+//   marginLeft:10
+// },
+// happy:{
+//   width:70,
+//   height:70,
+//   marginLeft:10
+// },
+// wd:{
+//   color:"#fff",
+//   fontWeight:"bold"
+// },
+// why:{
+//   marginLeft:10,
+//   marginTop:5
+// },
+// h3:{
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   marginTop:10,
+//   flexDirection:"column-reverse",
+// },
+// t1:{
+//   width:320,
+//   height:250,
+//   backgroundColor:"#4E7E8C",
+//   borderRadius:30,
+//   marginTop:20,
+  
+// },
+// whyw:{
+//   color:"#fff",
+//   fontSize:20,
+//   marginLeft:30,
+//   width:265,
+//   marginTop:30
+// },
   });
 
 export default Dailycontent;
