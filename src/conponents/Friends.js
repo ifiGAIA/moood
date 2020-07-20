@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,Image,ScrollView,TouchableOpacity,Dimensions } from 'react-native';
 import beok from "../json/json.json"
+
+let screenWidth = Dimensions.get('window').width;//*
+let screenHeight = Dimensions.get('window').height;//*0.0015
 
 const Friends = ({navigation}) => {
     // console.log(navigation)
@@ -107,7 +110,7 @@ const Friends = ({navigation}) => {
     hline:{
         backgroundColor:"#82A4AE",
         height:1,
-        width:320,
+        width:screenWidth*0.85,//320
         marginTop:8
     },
     f1:{
@@ -124,7 +127,7 @@ const Friends = ({navigation}) => {
         fontSize:15,
         margin:3,
         marginLeft:25,
-        width:80
+        width:screenWidth*0.25//80
     },
     m1:{
         flexDirection:"row",

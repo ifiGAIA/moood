@@ -71,8 +71,9 @@ const Login = ({ navigation }) => {
           firebase.database()
           .ref('/users/'+result.user.uid)
           .set({
-          name: 'test2',
-          gmail: email
+          name: input,
+          gmail: email,
+          mood:""
         })
       })
         setIsLogin(true);

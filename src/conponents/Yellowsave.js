@@ -6,12 +6,27 @@ import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 import axios from "axios";
+import * as firebase from "firebase";
 
 const EXPO_PUSH_ENDPOINT = "https://exp.host/--/api/v2/push/send";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
 const CHART_PERSISTENCE_KEY = "CHART_PERSISTENCE_KEY";
 const HAS_SET_KEY2 = "HAS_SET_KEY2";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBqVBjsd0lYup9QBOtpwQRxelsakbHKV-Q",
+  authDomain: "logintest-f843a.firebaseapp.com",
+  databaseURL: "https://logintest-f843a.firebaseio.com",
+  projectId: "logintest-f843a",
+  storageBucket: "logintest-f843a.appspot.com",
+  messagingSenderId: "244239715678",
+  appId: "1:244239715678:web:daa106ad69ef257291d3cf",
+  measurementId: "G-NWHE0DB6KT"
+};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const Yellowsave = ({navigation}) => {
     // console.log(navigation)
@@ -121,9 +136,16 @@ const Yellowsave = ({navigation}) => {
       saveToAsyncStorage2();
   }, [chart]);
 
-    // const saveAngrychart = () => {
-    //   setChart({...chart,s:"https://i.imgur.com/W6XOYnX.png"});
-    // }
+  const updatefile = () =>{
+    let newReference = firebase.database()
+     .ref('/users/'+firebase.auth().currentUser.uid+'/mood/sad')
+     .push();
+     newReference
+     .update({
+       content:input
+       
+   })
+   }
     
     return (
     <ScrollView style={styles.container}>
@@ -157,6 +179,7 @@ const Yellowsave = ({navigation}) => {
                         setInput('');
                         sendPushNotification();
                         setChart({...chart,a:[...chart.a,cin]});
+                        updatefile();
                     }}
                     >
                         <Image style={styles.sbtn} source={{url:beok[1].ysave}}/>

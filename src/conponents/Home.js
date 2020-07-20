@@ -1,7 +1,10 @@
 import React,{ useEffect } from 'react';
-import { StyleSheet, Text, View,Image, ScrollView,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,Image, ScrollView,TouchableOpacity,Dimensions} from 'react-native';
 import beok from "../json/json.json"
 import { Audio } from 'expo-av';
+
+let screenWidth = Dimensions.get('window').width;
+let screenHeight = Dimensions.get('window').height;
 
 const Home = ({navigation}) => {
   // useEffect(() => {
@@ -78,37 +81,37 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   iam:{
-      width:70,
-      height:40,
+      width:screenWidth*0.2,//70
+      height:screenHeight*0.06,//40
       marginTop:50
   },
   line:{
-    width:45,
+    width:screenWidth*0.12,//45
     height:2,
     backgroundColor:"#fff"
   },
   back:{
     position:"absolute",
     width:"100%",
-    height:410,
-    marginTop:150
+    height:screenHeight*0.615,//410
+    marginTop:screenHeight*0.225//150
   },
   angry:{
-      width:90,
-      height:109.59,
-      marginTop:70,
+      width:screenWidth*0.24,//90
+      height:screenHeight*0.164385,//109.59
+      marginTop:screenHeight*0.105,//70
       marginLeft:40
   },
   sad:{
-    width:90,
-    height:111.14,
-    marginTop:25,
+    width:screenWidth*0.24,//90
+    height:screenHeight*0.16671,//111.14
+    marginTop:screenHeight*0.038,//25
     marginRight:45
   },
   happy:{
-    width:90,
-    height:110.51,
-    marginTop:50,
+    width:screenWidth*0.24,//90
+    height:screenHeight*0.165765,//110.51
+    marginTop:screenHeight*0.076,//50
     marginLeft:25
   },
 });

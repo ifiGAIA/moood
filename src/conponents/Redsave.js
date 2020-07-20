@@ -91,7 +91,7 @@ const Redsave = ({ navigation }) => {
           to: expoPushToken,
           sound: "default",
           title: "你有新訊息",
-          body: "熊熊好像需要您的關心!",
+          body: "好像有好友需要您的關心!",
           data: { text: sendMsg },
           _displayInForeground: true,
         };
@@ -142,7 +142,7 @@ const Redsave = ({ navigation }) => {
 
 const updatefile = () =>{
  let newReference = firebase.database()
-  .ref('/users/'+firebase.auth().currentUser.uid)
+  .ref('/users/'+firebase.auth().currentUser.uid+'/mood/angry')
   .push();
   newReference
   .update({
