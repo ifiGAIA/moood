@@ -26,7 +26,7 @@ const Daily = ({navigation}) => {
              <Swiper style={styles.wrapper}  dotStyle={styles.dotStyle} 
              activeDotStyle={styles.activeDotStyle} horizontal={true} loop={false} index={1}>
              <View style={styles.day}>
-                 <Text style={styles.dayw}>6</Text>
+                 <Text style={styles.dayw}>7</Text>
              <View style={styles.moodbtn}>
              <TouchableOpacity><Image style={styles.mood1_6} source={hh}/></TouchableOpacity>
              </View>
@@ -71,7 +71,7 @@ const Daily = ({navigation}) => {
              </View>
             </View>
             <View style={styles.day}>
-                 <Text style={styles.dayw}>7</Text>
+                 <Text style={styles.dayw}>8</Text>
              <View style={styles.moodbtn}>
              <TouchableOpacity ><Image style={styles.mood1_7} source={hh}/></TouchableOpacity>
              </View>
@@ -103,7 +103,7 @@ const Daily = ({navigation}) => {
              </View>
             </View>
             <View style={styles.day}>
-                 <Text style={styles.dayw}>8</Text>
+                 <Text style={styles.dayw}>9</Text>
              {/* <View style={styles.moodbtn}>
              <TouchableOpacity onPress={() => navigation.navigate("Content")}><Image style={styles.mood1} source={{url:beok[0].happy}}/></TouchableOpacity>
              </View>
@@ -298,8 +298,9 @@ const Daily = ({navigation}) => {
         position:"absolute",
         width:30,
         height:36.53,
-        marginTop:90,
-        right:30
+        marginTop:163,
+        // right:30
+        left:-15
     },
     mood4_7:{
         position:"absolute",

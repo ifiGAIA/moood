@@ -11,7 +11,7 @@ const Dailycontent = ({navigation}) => {
     const [count, setCount] = useState(0);
     const {meState} = useContext(StoreContext);
     const [me, setMe] = meState;
-    let day = "2020.07.03";
+    let day = "2020.08.11";
     // console.log(me);
     if(count==0)
     return (

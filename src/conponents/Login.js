@@ -42,12 +42,8 @@ const Login = ({ navigation }) => {
     const [msg, setMsg] = useState(" ");
     const { userState } = useContext(StoreContext);
     const [user, setUser] = userState;
-    const [input,setInput] = useState('');
-    // let db = firebase.firestore();
-    // useEffect(()=>{
-    //   firebase.initializeApp(firebaseConfig);
-    // },[])
-    // db.collection("users").doc(firebase.auth().currentUser.uid).collection("content").doc("1");
+    // const [input,setInput] = useState('');
+   
     const onSignIn = async () => {
       setMsg(" ");
       setLoading(true);
@@ -211,8 +207,8 @@ const Login = ({ navigation }) => {
               style={{ fontSize: 20, marginLeft: 20, width: 290 }}
               placeholder="User name"
               placeholderTextColor="#DBDBDB"
-              value={input}
-          onChangeText={(input) => setInput(input)}
+              value={user.users}
+          onChangeText={(users) => setUser({ ...user, users })}
               
             />
           </View>

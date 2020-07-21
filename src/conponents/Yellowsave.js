@@ -156,10 +156,10 @@ const Yellowsave = ({navigation}) => {
              <View style={styles.line}></View>
              <View style={styles.date}>
                  <Text style={styles.wd}>DATE</Text>
-                 <Text style={styles.wday}>2 0 2 0 . 0 7 . 0 3 </Text>
+                 <Text style={styles.wday}>2 0 2 0 . 0 8 . 1 1 </Text>
              </View>
          </View>
-         <View style={styles.h1}>
+         <View style={styles.h2}>
          <View style={styles.line2}></View>
              <View style={styles.why}>
                  <Text style={styles.wd}>WHY</Text>

@@ -153,14 +153,17 @@ const Happysave = ({navigation}) => {
 
     return (
     <ScrollView style={styles.container}>
+       <View style={styles.backx}>
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}><Image style={styles.backxph} source={{url:beok[0].backx}}/></TouchableOpacity>
+          </View>
          <View style={styles.h1}>
              <View style={styles.line}></View>
              <View style={styles.date}>
                  <Text style={styles.wd}>DATE</Text>
-                 <Text style={styles.wday}>2 0 2 0 . 0 7 . 0 3 </Text>
+                 <Text style={styles.wday}>2 0 2 0 . 0 8 . 1 1 </Text>
              </View>
          </View>
-         <View style={styles.h1}>
+         <View style={styles.h2}>
          <View style={styles.line2}></View>
              <View style={styles.why}>
                  <Text style={styles.wd}>WHY</Text>
@@ -200,7 +203,7 @@ const Happysave = ({navigation}) => {
   h1: {
       flexDirection: "row",
       marginLeft: 20,
-      marginTop: screenHeight*0.1
+      marginTop: -screenHeight*0.03
   },
   h2: {
     flexDirection: "row",
@@ -254,7 +257,15 @@ const Happysave = ({navigation}) => {
       width: 137,
       height: 45,
       marginTop:screenHeight*0.05
-  }
+  },
+  backx:{
+    alignItems: "flex-end",
+    marginTop:screenHeight*0.1
+  },
+  backxph:{
+    width:60,
+    height:50,
+  },
     // container:{
     //     backgroundColor:"#05495D",
     // },

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import meJson from "../json/me.json";
-import userJson from "../json/uesr.json";
+import userJson from "../json/user.json";
 import chartJson from "../json/chart.json";
 import { AsyncStorage } from "react-native";
 
@@ -21,7 +21,6 @@ export const StoreProvider = ({ children }) => {
   const [me, setMe] = useState(meJson);
   const [user,setUser] = useState(userJson);
   const [chart,setChart] = useState(chartJson);
-  const [ready, setReady] = useState(false);
   const store = {
     isLoginState: [isLogin, setIsLogin],
     meState: [me, setMe],
@@ -51,34 +50,34 @@ const restoreState = async () => {
 
         const userString = await AsyncStorage.getItem(USER_PERSISTENCE_KEY);
         const state_user = JSON.parse(userString);
-        // console.log(state_user);
-        // setReady(true);
         setUser(state_user);
         console.log(state_me);
         console.log(state_chart);
+        console.log(state_user);
         // console.log('restore from context chart a: ' + chart.a);
         // console.log('restore from phone chart a: ' + state_chart.a);
         
        
       }
     } catch (e) {
-      // setReady(true);
+    
     }
   };
 
   const adjustState = async () =>{
+   try {
     await AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(meJson));
     await AsyncStorage.setItem(CHART_PERSISTENCE_KEY,JSON.stringify(chartJson));
-  }
+   }
+   catch(e){
 
+   }
+  };
+  
   useEffect(() => {
     restoreState();
     // adjustState();
   }, []);
-
-  // if(!ready) {
-  //   return null
-  // }
 
   return (
    <StoreContext.Provider value={store}>

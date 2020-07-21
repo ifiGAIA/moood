@@ -13,7 +13,7 @@ const Friends = ({navigation}) => {
              <View style={styles.line}></View>
              <View style={styles.date}>
                  <Text style={styles.wd}>DATE</Text>
-                 <Text style={styles.wday}>2020.07.03</Text>
+                 <Text style={styles.wday}>2020.08.11</Text>
              </View>
          </View>
          <ScrollView contentContainerStyle={styles.h2}>
