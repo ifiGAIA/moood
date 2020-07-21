@@ -33,8 +33,8 @@ const Setting = ({navigation}) => {
         <View style={styles.usern}>
         <Text style={styles.usernamew}>Username</Text>
         <TextInput
-        // placeholder="yiiii_6262"
-        placeholder={user.users}
+        placeholder="yiiii_6262"
+        // placeholder={user.users}
         placeholderTextColor="#fff"
         letterSpacing="2"
         color="#fff"

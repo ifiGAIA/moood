@@ -20,9 +20,11 @@ import { StoreProvider } from "./src/stores/Store.js"
 import * as firebase from "firebase";
 import { StoreContext } from "./src/stores/Store.js";
 import Login from "./src/conponents/Login";
+import {SplashScreen} from "expo";
+import { ImagePropTypes } from 'react-native';
+import meJson from './src/json/me.json';
+import chartJson from "./src/json/chart.json";
 
-const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
-const HAS_SET_KEY = "HAS_SET_KEY";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -93,25 +95,45 @@ const MyTab = () => {
 };
 
 const PERSISTENCE_KEY = "ALBUMS_NAVIGATION_STATE";
-const App = () => {
+
+const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
+const HAS_SET_KEY = "HAS_SET_KEY";
+const CHART_PERSISTENCE_KEY = "CHART_PERSISTENCE_KEY";
+const HAS_SET_KEY2 = "HAS_SET_KEY2";
+
+const App = (props) => {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   const { isLoginState } = useContext(StoreContext);
   const [ isLogin, setIsLogin] = isLoginState;
-
-
+  
+  const [me, setMe] = React.useState(meJson);
+  const [chart,setChart] = React.useState(chartJson);
+  
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
+        SplashScreen.preventAutoHide();
+        
         const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
         const state = JSON.parse(savedStateString);
         setInitialNavigationState(state);
+        await AsyncStorage.setItem(ME_PERSISTENCE_KEY, JSON.stringify(meJson));
+        await AsyncStorage.setItem(CHART_PERSISTENCE_KEY,JSON.stringify(chartJson));
+        // const meString = await AsyncStorage.getItem(ME_PERSISTENCE_KEY);
+        // const state_me = JSON.parse(meString);
+        // setMe(state_me);
+
+        // const chartString = await AsyncStorage.getItem(CHART_PERSISTENCE_KEY);
+        // const state_chart = JSON.parse(chartString);
+        // setChart(state_chart);
+        
       } catch (e) {
 
         console.warn(e);
       } finally {
         setLoadingComplete(true);
-
+        SplashScreen.hide();
       }
     }
     loadResourcesAndDataAsync();
@@ -135,7 +157,7 @@ const App = () => {
    }
   }, []);
  
-  if (!isLoadingComplete) {
+  if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
     return isLogin ? (

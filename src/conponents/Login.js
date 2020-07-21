@@ -40,6 +40,7 @@ const Login = ({ navigation }) => {
     const { isLoginState } = useContext(StoreContext);
     const [isLogin, setIsLogin] = isLoginState;
     const [msg, setMsg] = useState(" ");
+    const [msg2, setMsg2] = useState(" ");
     const { userState } = useContext(StoreContext);
     const [user, setUser] = userState;
     // const [input,setInput] = useState('');
@@ -80,7 +81,7 @@ const Login = ({ navigation }) => {
         setPassword("");
         setError("");
       } catch (err) {
-        setMsg('Please enter information');
+        setMsg2('Please enter information');
       }finally{
         setEmail("");
         setPassword("");
@@ -98,7 +99,7 @@ const Login = ({ navigation }) => {
      );
      else
      return (
-      <TouchableOpacity onPress={()=>{onSignUp();setUser({ ...user, user:input })}}><View style={styles.signinbbup}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
+      <TouchableOpacity onPress={onSignUp}><View style={styles.signinbbup}><Text style={styles.signinbbinw}>Sign up</Text></View></TouchableOpacity>
      );
     };
 
@@ -239,8 +240,7 @@ const Login = ({ navigation }) => {
           </View>
           
           {renderButton()}
-          <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{msg}</Text>
-          
+          <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{msg2}</Text>
           <View style={styles.or2}>
             <View style={styles.orline}></View>
             <Text style={styles.orw}>or</Text>
@@ -405,11 +405,11 @@ const Login = ({ navigation }) => {
     },
     or: {
       flexDirection: "row",
-      marginTop:60
+      marginTop:70
     },
     or2: {
       flexDirection: "row",
-      marginTop: 35
+      marginTop: 45
     },
     orline: {
       width: 130,
