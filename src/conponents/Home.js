@@ -60,7 +60,6 @@ const Home = ({navigation}) => {
       
         <View style={styles.ph}>
       <Image style={styles.iam} source={{url:beok[0].iam}}/>
-      <View style={styles.line}></View>
       <Image style={styles.back} source={{url:beok[0].back}}/>
       <TouchableOpacity onPress={()=>{PlayAngry()}}><Image style={styles.angry} source={{url:beok[0].angry}}/></TouchableOpacity>
       <TouchableOpacity onPress={() =>{PlaySad()}}><Image style={styles.sad} source={{url:beok[0].sad}}/></TouchableOpacity>
@@ -84,11 +83,6 @@ iam:{
     width:screenWidth*0.2,//70
     height:screenHeight*0.04,//40
     marginTop:70
-},
-line:{
-  width:screenWidth*0.12,//45
-  height:2,
-  backgroundColor:"#fff"
 },
 back:{
   position:"absolute",

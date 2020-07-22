@@ -115,9 +115,8 @@ const RedButton  = ({navigation}) => {
   },
   bottombtn:{
     flexDirection:"row",
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop:10
+    justifyContent:'space-between',
+    marginTop:screenHeight*0.05
   },
   backbtn:{
     width:60,
@@ -126,7 +125,6 @@ const RedButton  = ({navigation}) => {
   okbtn:{
     width:60,
     height:50,
-    marginLeft:250
   },
   ball: {
     height: 60,

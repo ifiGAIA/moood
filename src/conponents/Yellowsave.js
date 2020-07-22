@@ -216,16 +216,15 @@ const Yellowsave = ({navigation}) => {
   },
   date: {
       marginLeft: 10,
-      marginTop: 5
   },
   wd: {
       color: "#fff",
       fontWeight: "bold",
-      fontSize:11
+      fontSize:15
   },
   wday: {
       color: "#fff",
-      fontSize: 15,
+      fontSize: 20,
       fontWeight: "bold",
       marginTop: 30
   },
@@ -236,15 +235,14 @@ const Yellowsave = ({navigation}) => {
   },
   why: {
       marginLeft: 10,
-      marginTop: 5
   },
   h3: {
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 10
+      marginTop: screenHeight*0.05
   },
   t1: {
-      width: 320,
+      width: screenWidth*0.853,
       height: 340,
       backgroundColor: "#4E7E8C",
       borderRadius: 30,

@@ -148,17 +148,17 @@ const Dailycontent = ({navigation}) => {
   h1:{
     flexDirection:"row",
     marginLeft:20,
-    marginTop:40
+    marginTop:screenHeight*0.03
 },
 h1_1:{
   flexDirection:"row",
   marginLeft:20,
-  marginTop:10
+  marginTop:screenHeight*0.05
 },
 h2:{
   flexDirection:"row",
   marginLeft:20,
-  marginTop:30
+  marginTop:screenHeight*0.06
 },
 line:{
     width:2,
@@ -172,18 +172,17 @@ line2:{
 },
 mood:{
     marginLeft:10,
-    marginTop:5
 },
 wm:{
     color:"#fff",
     fontWeight:"bold",
-    fontSize:11
+    fontSize:15
 },
 wm2:{
   color:"#fff",
   fontWeight:"bold",
   marginTop:10,
-  fontSize:15,
+  fontSize:20,
   letterSpacing:2,
 },
 angry:{
@@ -204,11 +203,10 @@ marginLeft:10
 wd:{
 color:"#fff",
 fontWeight:"bold",
-fontSize:11
+fontSize:15
 },
 why:{
-marginLeft:10,
-marginTop:5
+marginLeft:10
 },
 h3:{
 alignItems: 'center',
@@ -217,7 +215,7 @@ marginTop:10,
 flexDirection:"column-reverse",
 },
 t1:{
-width:320,
+width:screenWidth*0.853,
 height:250,
 backgroundColor:"#4E7E8C",
 borderRadius:30,

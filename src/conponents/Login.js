@@ -268,7 +268,7 @@ const Login = ({ navigation }) => {
     title: {
       width: 146,
       height: 50,
-      marginTop: 60
+      marginTop: screenHeight*0.12
     },
     sign: {
       flexDirection: "row",

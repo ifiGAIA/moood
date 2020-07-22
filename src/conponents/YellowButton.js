@@ -96,19 +96,16 @@ const YellowButton = ({navigation}) => {
   },
   bottombtn:{
     flexDirection:"row",
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop:10
+    justifyContent:'space-between',
+    marginTop:screenHeight*0.05
   },
   backbtn:{
     width:60,
     height:50,
-   
   },
   okbtn:{
     width:60,
     height:50,
-    marginLeft:250
   },
   btnt:{
     width:200,

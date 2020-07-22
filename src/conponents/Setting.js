@@ -82,12 +82,12 @@ const Setting = ({navigation}) => {
     },
     h1:{
         alignItems:"center",
-        marginTop:60
+        marginTop:screenHeight*0.1
     },
     account:{
         color:"#fff",
         fontSize:18,
-        marginRight:230,
+        marginRight:screenWidth*0.63,
         letterSpacing:3
     },
     h2:{
@@ -97,7 +97,7 @@ const Setting = ({navigation}) => {
     about:{
         color:"#fff",
         fontSize:18,
-        marginRight:220,
+        marginRight:screenWidth*0.6,
         letterSpacing:3
     },
    line:{
@@ -112,7 +112,7 @@ const Setting = ({navigation}) => {
    sb:{
     width:120,
     height:60,
-    marginTop:50,
+    marginTop:screenHeight*0.05,
    },
    logoutbbin:{
     backgroundColor:"#05495D",
@@ -123,7 +123,7 @@ const Setting = ({navigation}) => {
     borderRadius:999,
     justifyContent: 'center', 
     alignItems: 'center',
-    marginTop:screenHeight*0.16,
+    marginTop:screenHeight*0.14,
   },
   logoutw:{
       color:"#fff",

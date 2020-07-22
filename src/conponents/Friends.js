@@ -89,23 +89,22 @@ const Friends = ({navigation}) => {
     },
     date:{
         marginLeft:10,
-        marginTop:5
     },
     wd:{
         color:"#fff",
         fontWeight:"bold",
-        fontSize:11
+        fontSize:15
     },
     wday:{
         color:"#fff",
-        fontSize:15,
+        fontSize:20,
         fontWeight:"bold",
         marginTop:20,
         letterSpacing:5
     },
     h2:{
         alignItems: 'center',
-        marginTop:screenHeight*0.13,//50
+        marginTop:screenHeight*0.05,//50
         height:100
     },
     hline:{
