@@ -34,7 +34,7 @@ const Login = ({ navigation }) => {
     // console.log(navigation)
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(" ");
     const [loading, setLoading] = useState(false);
     const [count, setCount] = useState(0);
     const { isLoginState } = useContext(StoreContext);
@@ -71,7 +71,7 @@ const Login = ({ navigation }) => {
           firebase.database()
           .ref('/users/'+result.user.uid)
           .set({
-          name: input,
+          name: user.users,
           gmail: email,
           mood:""
         })
@@ -81,7 +81,7 @@ const Login = ({ navigation }) => {
         setPassword("");
         setError("");
       } catch (err) {
-        setMsg2('Please enter information');
+        setError('Please enter information');
       }finally{
         setEmail("");
         setPassword("");
@@ -240,7 +240,7 @@ const Login = ({ navigation }) => {
           </View>
           
           {renderButton()}
-          <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{msg2}</Text>
+          <Text style={{ padding: 10, fontSize: 16, color: "white" }}>{error}</Text>
           <View style={styles.or2}>
             <View style={styles.orline}></View>
             <Text style={styles.orw}>or</Text>
