@@ -22,8 +22,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ifigaia.beokproj"
     },
-    "description": ""
+    "description": "",
+    "android": {
+      "package": "com.ifigaia.beokproj"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
